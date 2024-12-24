@@ -8,15 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Temp
-{//리포지토리 테스트...
+{
     internal class Game
     {
         private Player player;
-        public static MapManager map {  get; private set;} = new MapManager();
-        public static EnemyManager enemy { get; private set;} = new EnemyManager();
+        public static MapManager map { get; private set; } = new MapManager();
+        public static EnemyManager enemy { get; private set; } = new EnemyManager();
         
+
         public Game()
         {
+            
         }
         public void Start()
         {
@@ -25,9 +27,9 @@ namespace Temp
             string playerName = Console.ReadLine();
             player = new Player(playerName);
             Console.WriteLine($"환영합니다 {player._Name}님");
+            
             MainLoop();
         }
-        
         public void MainLoop()
         {
             while (true)
@@ -39,85 +41,21 @@ namespace Temp
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        Console.WriteLine("시작의 마을, 낯선 풍경이지만 왠지 익숙한 느낌이 든다.");
-                        map.Village.StartingVillage(player);
+                        ((Village)map.Locations[0]).MapNamespace();
+                        //클래스 형변환 이렇게도 할 수 있다는 것을 알았다.
+                        ((Village)map.Locations[0]).StartingVillage(player);
                         break;
                     case "2":
                         player.PlayerStats();
-                        MainLoop();
                         break;
-                    case "3":
-                        Console.WriteLine("게임을 종료합니다. 안녕히가세요.");
+                    case "3":                        
+                        Console.WriteLine("게임을 종료합니다. 안녕히가세요.");                        
                         return;
                     default:
-                        Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
-                        MainLoop();
+                        Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");                        
                         break;
                 }
             }
         }        
-        public void GoToField(Player player)
-        {
-            map.field.OneField(player);
-        }
-        public static void Fight(Player player, Enemy enemy)
-        {
-            Random Random = new Random();
-            Console.WriteLine($"{enemy._Name} 발견 싸우시겠습니까? ");
-            bool isFighting = true;
-            while (isFighting)
-            {
-                Console.WriteLine("1. 싸운다.");
-                Console.WriteLine("2. 도망간다.");
-                switch (Console.ReadLine())
-                {
-                    case "1":
-                        enemy.EnemyDisplayStats();
-                        if (enemy._Health > 0)
-                        {
-                            player.Attack(enemy);
-                            if (enemy._Health > 0)
-                            {
-                                enemy.Attack(player);
-                            }
-                            else
-                            {
-                                Console.WriteLine("승리");
-            
-                                player._Exp += enemy._Exp;
-                                player._Gold += enemy._Gold;
-                                Console.WriteLine($"경험치 :{enemy._Exp}획득, 골드: {enemy._Gold}획득,");
-                                isFighting = false;
-                            }
-                        }
-                        else
-                        {
-                            Console.WriteLine("승리");
-                            player._Exp += enemy._Exp;
-                            player._Gold += enemy._Gold;
-                            Console.WriteLine($"경험치 :{enemy._Exp}획득, 골드: {enemy._Gold}획득,");
-                            isFighting=false;
-                        }
-                        break;
-                    case "2":
-                        int Avoid = Random.Next(3);
-                        if (Avoid == 0)
-                        {
-                            player._Health -= 10;
-                            Console.WriteLine("도망에 성공했지만 체력이 감소했습니다.");
-                            isFighting = false;
-                        }
-                        else
-                        {
-                            Console.WriteLine("성공적으로 도망쳤습니다.");
-                            isFighting = false;
-                        }                        
-                        break;
-                    default:
-                        Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
-                        break;
-                }
-            }
-        }
     }
 }

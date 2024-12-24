@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Temp
 {
-    internal class Dungeon
+    internal class Dungeon : Location
     {
-        public Dungeon() { }
+
+        public Dungeon(string name, string description) : base(name, description)
+        {
+        }
+        public override void MapNamespace()
+        {
+            Console.WriteLine($"{Name} , {Description}");
+        }
         public void startDungeon() //첫번째 던전
         {
             Console.WriteLine("던전이다..."); //던전 설명
