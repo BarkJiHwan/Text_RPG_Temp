@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Temp
-{
+{//리포지토리 테스트...
     internal class Game
     {
         private Player player;
