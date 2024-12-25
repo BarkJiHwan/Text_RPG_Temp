@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Temp
 {
     static class BattleManager
-    {
+    {        
         static public bool FightSeting()
         {
             bool isFighting;
@@ -16,34 +17,29 @@ namespace Temp
             switch (Console.ReadLine())
             {
                 case "1":
-
+                    
                     return isFighting = true;
                 case "2":
 
                     return isFighting = false; ;
                 default:
                     Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
-                    FightSeting();
-                    return true;
+                    return FightSeting();
             }
         }
 
         static public void HeroesNeverDying(Player player)
         {
             Console.WriteLine("1. 부활");
-            Console.WriteLine("2. 죽음");
             switch (Console.ReadLine())
             {
                 case "1":
-                    Console.WriteLine("");
-                    break;
-                case "2":
-                    Console.WriteLine("");
-                    break;
+                    Console.WriteLine("부활합니다. ");
+
+                    break;                
+                
             }
         }
-
-                
 
         public static void Fight(Player player, Enemy enemy)
         {
@@ -70,8 +66,17 @@ namespace Temp
                                 enemy.Attack(player);
                                 if (player._Health < 0)
                                 {
-                                    Console.WriteLine("죽었습니다");
-                                    Console.WriteLine("부활");
+                                    Console.WriteLine("당신은 죽었습니다");
+                                    Console.WriteLine("3초 후 태초의 장소에서 부활합니다.");
+                                    Console.WriteLine("3...");
+                                    Thread.Sleep(1000);
+                                    Console.WriteLine("2...");
+                                    Console.WriteLine("소지금의 절반을 몬스터가 훔쳐갑니다.");
+                                    player._Gold = player._Gold / 2;
+                                    Thread.Sleep(1000);
+                                    Console.WriteLine("1... \t");
+                                    Thread.Sleep(1000);                                    
+                                    //첫번째 맵으로 이동하는 로직 추가하기.
 
                                 }
                             }
@@ -106,8 +111,8 @@ namespace Temp
                         int Avoid = Random.Next(3);
                         if (Avoid == 0)
                         {
-                            player._Health -= 10;
-                            Console.WriteLine("도망에 성공했지만 체력이 감소했습니다.");
+                            enemy.Attack(player);
+                            Console.WriteLine("도망가는 도중 적에게 공격당했습니다.");
                             isFighting = false;
                         }
                         else

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Temp
@@ -28,13 +29,28 @@ namespace Temp
 
                 _enemies.Add(new Enemy("오크", 120, 20, 5, 15, 15));
                 _enemies.Add(new Enemy("오우거", 250, 25, 10, 20, 25));
-                _enemies.Add(new Enemy("트롤", 400, 30, 15, 40, 50));
+                _enemies.Add(new Enemy("트롤", 400, 30, 25, 40, 50));
+                _enemies.Add(new Enemy("사이클롭스", 600, 40, 45, 60, 70));
+                
             }
         }
-        public Enemy EnemyRandomGet()
+        public Enemy EnemyRandomGet(int mapNum)
         {
             Random random = new Random();
-            int num = random.Next(4);
+            int num = 0;
+            if (mapNum == 1)
+            {
+                num = random.Next(0,4);
+            }
+            else if (mapNum == 2)
+            {
+                num = random.Next(3,7);
+            }
+            else if (mapNum == 3)
+            {
+                num = random.Next(7,10);
+            }
+
             Enemy CopyEnemy = _enemies[num];
             return new Enemy(CopyEnemy._Name, CopyEnemy._Health, CopyEnemy._Damage, CopyEnemy._Armor, CopyEnemy._Gold,CopyEnemy._Exp);
         }

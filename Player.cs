@@ -2,33 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Temp
 {
     internal class Player : Character
     {
+        public bool Mainstory;
         public Player(string name) : base(name, 100, 10, 5)
         {
             _Name = name;
             _Level = 1;
+            _Health = 100;
             _Damage = 10;
             _Armor = 5;
-            _Health = 100;
             _Mana =50 ;
             _MaxHealth = _Health;
             _MaxMana = _Mana;
-            _Gold = 0;
-            _maxGold = 999_999_999;
-
             _Critical = 5;
             _CriticalDam = (_Damage * 1.5);
-            _Exp = 0;
-            _MaxHealth = 0;
-            _MaxMana = 0;
             _Gold = 0;
-            _maxGold = 0;
-            _maxExp = 0;
+            
+            _maxGold = 999_999_999;
+            _Exp = 0;
+            _maxExp = 0;            
         }
 
         public override void Attack(Character target)
