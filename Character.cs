@@ -10,7 +10,7 @@ namespace Temp
     public abstract class Character
     {
         public string Name { get; set; }
-        public int Type {  get; set; }
+        public int Type { get; set; }
         public int Health { get; set; }
         public int Mana { get; set; }
         public int MaxHealth { get; set; }
@@ -24,17 +24,17 @@ namespace Temp
         public int Level { get; set; }
         public int Exp { get; set; }
         public int MaxExp { get; set; }
-        public bool IsPlayerState { get; set; } //죽었니~ 살앗니~?
+        public bool IsPlayerState { get; set; }
         static int EnemyCount = 0;
         protected Character(string name, int health, int damage, int armor)
-        { 
+        {
             Name = name;
-            Health = health;   
+            Health = health;
             MaxHealth = damage;
             Mana = armor;
         }
 
-        public void Attack(Character target)        
+        public void Attack(Character target)
         {
             int attackDamag = Damage - target.Armor;
             if (attackDamag < 0)
@@ -43,6 +43,13 @@ namespace Temp
             }
             target.Health -= attackDamag;
             Console.WriteLine($"{Name}이가 {target.Name}에게 {attackDamag}피해를 줬습니다.");
+        }
+        public void HealthZero(Character target)
+        {
+            if (target.Health < 0)
+            {
+                Health = MaxHealth;
+            }
         }
     }
 

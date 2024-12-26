@@ -15,8 +15,8 @@ namespace Temp
         {
             Name = name;
             Level = 1;
-            Health = 100;
-            Damage = 10;
+            Health = 300;
+            Damage = 50;
             Armor = 5;
             Mana =50 ;
             MaxHealth = Health;

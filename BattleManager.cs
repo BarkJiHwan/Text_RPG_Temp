@@ -74,6 +74,7 @@ namespace Temp
                                     Console.WriteLine("소지금의 절반을 몬스터가 훔쳐갑니다.");
                                     player.Gold = player.Gold / 2;
                                     Thread.Sleep(1000);
+                                    player.HealthZero(player);
                                     Console.WriteLine("1... \t");
                                     Thread.Sleep(1000);
                                     ((Village)Game.map.Locations[0]).BeginningVillage(player,start);

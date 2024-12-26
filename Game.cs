@@ -64,7 +64,7 @@ namespace Temp
                         Console.WriteLine($"??? : 제..이름....");
                         UserToName();
                         story.FirstQuarter2(player);
-                        ((Village)map.Locations[0]).BeginningVillage(player, start);                        
+                        ((Village)map.Locations[0]).BeginningVillage(player, start);
                         break;
                     case "3":
                         GameStop();

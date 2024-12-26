@@ -33,7 +33,7 @@ namespace Temp
                         if(mapType == 1)
                         {
                             MapType = mapType;
-                            //Quest = mapType;                            
+                            //Quest = mapType; 퀘스트 테이블 추가 예정
                             ((Dungeon)Game.map.Locations[3]).MapNamespace();
                             ((Dungeon)Game.map.Locations[3]).FirstDungeon(player, start, mapType);
                         }
@@ -52,7 +52,7 @@ namespace Temp
             Random random = new Random();
             while (Game.start)
             {
-                int rd = random.Next(0, 1);
+                int rd = random.Next(0, 10);
                 Console.WriteLine("이동중..");
                 Thread.Sleep(1000);                
                 if (rd == 0)
