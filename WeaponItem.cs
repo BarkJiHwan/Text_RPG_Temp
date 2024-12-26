@@ -8,9 +8,6 @@ namespace Temp
 {
     internal class WeaponItem : Item
     {
-        public int Damage { get; set; }        
-        public double Critical { get; set; }
-        public double CriticalDam { get; set; }
         public WeaponItem(string name, int damage, double criticall, double criticalDam, string description ,int price) 
             : base(ItemTpye.Weapon, name, description, price)
         {

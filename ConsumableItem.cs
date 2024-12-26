@@ -8,9 +8,6 @@ namespace Temp
 {
     internal class ConsumableItem : Item
     {
-        public int Health { get; set; }
-        public int Mana { get; set; }
-
         public ConsumableItem(string name, string description, int health, int mana, int price)
             : base(ItemTpye.Consumable, name, description, price)
         {

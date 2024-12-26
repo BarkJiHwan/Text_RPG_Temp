@@ -71,5 +71,6 @@ namespace Temp
             Console.WriteLine($"레벨이 올랐습니다.\n" +
                 $"체력과 마력이 모두 회복됩니다.");
         }
+
     }
 }

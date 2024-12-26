@@ -11,16 +11,16 @@ namespace Temp
     internal class ItemManager
     {
         public Item item {  get; set; }
-        public List<WeaponItem> _WeaponItems { get; set; }
-        public List<ArmorItem> _ArmorItmes { get; set; }
-        public List<AccessoryItem> _AccessoryItems { get; set; }
-        public List<ConsumableItem> _ConsumableItems { get; set; }
-        public List<OtherItem> _OtherItems { get; set; }
+        public List<Item> _WeaponItems { get; set; }
+        public List<Item> _ArmorItmes { get; set; }
+        public List<Item> _AccessoryItems { get; set; }
+        public List<Item> _ConsumableItems { get; set; }
+        public List<Item> _OtherItems { get; set; }
         public ItemTpye _ItemTpye { get; set; } = new ItemTpye();
 
         public ItemManager()
         {            
-            _WeaponItems = new List<WeaponItem>();
+            _WeaponItems = new List<Item>();
             {
                 _WeaponItems.Add(new WeaponItem("긴 나무 몽둥이", 10, 2, 1.2, "단단한 나무로 만든 긴 몽둥이. 기본적인 무기로 사용된다", 500));
                 _WeaponItems.Add(new WeaponItem("낡은검", 15, 2, 1.3, "사용한지 오래되어 날에 녹이쓴 낡은 검이다", 2000));
@@ -43,7 +43,7 @@ namespace Temp
 
             }
 
-            _ArmorItmes = new List<ArmorItem>();
+            _ArmorItmes = new List<Item>();
             {
                 _ArmorItmes.Add(new ArmorItem("낡은천옷", 6, 36, 0, "조금 낡았지만 성능에 문제가 없는 옷이다.", 500));
                 _ArmorItmes.Add(new ArmorItem("가죽 갑옷", 9, 52, 1, "질긴 가죽으로 만든 기본적인 방어구.", 2000));
@@ -65,7 +65,7 @@ namespace Temp
                 _ArmorItmes.Add(new ArmorItem("고대의 갑옷", 55, 221, 14, "고대 유적에서 발굴된 갑옷. 매우 높은 방어력과 체력 증가.", 100000));
             }
 
-            _AccessoryItems = new List<AccessoryItem>();
+            _AccessoryItems = new List<Item>();
             {
                 _AccessoryItems.Add(new AccessoryItem("가죽 반지", 4, 5, 26, 30, "기본적인 반지로, 공격력과 방어력을 제공합니다.", 500));
                 _AccessoryItems.Add(new AccessoryItem("작은 고리", 5, 6, 30, 35, "작은 고리 모양의 악세서리. 공격력과 방어력을 제공합니다.", 1500));
@@ -87,7 +87,7 @@ namespace Temp
                 _AccessoryItems.Add(new AccessoryItem("어둠의 펜던트", 18, 19, 95, 100, "어둠의 힘이 깃든 펜던트. 체력과 마나를 증가시킵니다.", 50000));
             }
 
-            _ConsumableItems = new List<ConsumableItem>();
+            _ConsumableItems = new List<Item>();
             {
                 _ConsumableItems.Add(new ConsumableItem("초급 체력 회복 포션", "체력을 200 회복합니다.", 200, 0, 100));
                 _ConsumableItems.Add(new ConsumableItem("초급 마력 회복 포션", "마력을 100 회복합니다.", 0, 100, 100));
@@ -136,27 +136,27 @@ namespace Temp
 
             if(itemTpye == 0)
             {
-                WeaponItem CopyItem = _WeaponItems[CopyNum];
+                Item CopyItem = _WeaponItems[CopyNum];
                 return new WeaponItem(CopyItem.Name, CopyItem.Damage, CopyItem.Critical, CopyItem.CriticalDam, CopyItem.Description ,CopyItem.Price);
             }
             else if (itemTpye == 1)
             {
-                ArmorItem CopyItem = _ArmorItmes [CopyNum];
+                Item CopyItem = _ArmorItmes [CopyNum];
                 return new ArmorItem(CopyItem.Name, CopyItem.Armor, CopyItem.Health, CopyItem.Mana, CopyItem.Description, CopyItem.Price);
             }
             else if (itemTpye == 2)
             {
-                AccessoryItem CopyItem = _AccessoryItems[CopyNum];
+                Item CopyItem = _AccessoryItems[CopyNum];
                 return new AccessoryItem(CopyItem.Name, CopyItem.Damage, CopyItem.Armor, CopyItem.Health, CopyItem.Mana, CopyItem.Description, CopyItem.Price);
             }
             else if (itemTpye == 3) 
             {
-                ConsumableItem CopyItem = _ConsumableItems[CopyNum];
+                Item CopyItem = _ConsumableItems[CopyNum];
                 return new ConsumableItem(CopyItem.Name, CopyItem.Description, CopyItem.Health, CopyItem.Mana, CopyItem.Price);
             }
             else
             {
-                OtherItem CopyItem = _OtherItems[CopyNum];
+                Item CopyItem = _OtherItems[CopyNum];
                 return new OtherItem(CopyItem.Name, CopyItem.Description, CopyItem.Price);
             }
 

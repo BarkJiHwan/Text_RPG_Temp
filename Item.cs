@@ -10,7 +10,7 @@ namespace Temp
     {
         Weapon, Armor, Accessory, Consumable, OtherItem
     }    
-    public abstract class Item
+    public abstract class Item 
     {
         private ItemTpye weapon;
 
@@ -18,7 +18,15 @@ namespace Temp
         public string Name { get; set; }
         public string Description { get; set; }
         public int Price { get; set; }
-        protected Item(ItemTpye type, string name, string description, int price) 
+        public int Damage { get; set; }
+        public double Critical { get; set; }
+        public double CriticalDam { get; set; }
+        public int Armor { get; set; }
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
+        public int Mana { get; set; }
+        public int MaxMana { get; set; }
+        protected Item(ItemTpye type, string name, string description, int price)
         {
             Tpye = type;
             Name = name;
