@@ -44,18 +44,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessoryItem.cs" />
-    <Compile Include="ArmorItme.cs" />
+    <Compile Include="ArmorItem.cs" />
     <Compile Include="BattleManager.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="ConsumableItem.cs" />
     <Compile Include="Dungeon.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemManager.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="MapManager.cs" />
     <Compile Include="EnemyManager.cs" />
+    <Compile Include="OtherItem.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

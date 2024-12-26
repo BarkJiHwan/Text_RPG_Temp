@@ -16,10 +16,11 @@ namespace Temp
         public static MapManager map { get; private set; } = new MapManager();
         public static EnemyManager enemy { get; private set; } = new EnemyManager();
         public static Story story { get; private set; } = new Story();
-        public bool start = true;
+        public static ItemManager itemManager { get; private set; } = new ItemManager();
+        public static bool start;
         public Game()
         {
-
+            start = true;
         }
         public void Start()
         {
@@ -28,10 +29,8 @@ namespace Temp
             Console.WriteLine("2번을 선택할 경우 당장 메인스토리를 따라갈 수 없지만 분기별로 메인스토리에 접근할 수 있습니다.");
             Console.WriteLine("현재 2번 스토리는 구현되지 않아 2번을 선택 후 촌장집에 가면 메인스토리가 실행됩니다.");
             Console.WriteLine("1. 촌장을 따라 간다, 2. 촌장을 따라가지 않는다., 3. 게임 종료");
-
             while (start)
             {
-
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -65,11 +64,10 @@ namespace Temp
                         Console.WriteLine($"??? : 제..이름....");
                         UserToName();
                         story.FirstQuarter2(player);
-                        ((Village)map.Locations[0]).BeginningVillage(player, start);
-                        start = false;
+                        ((Village)map.Locations[0]).BeginningVillage(player, start);                        
                         break;
                     case "3":
-                        start = false;
+                        GameStop();
                         break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
@@ -90,6 +88,31 @@ namespace Temp
             player = new Player(playerName);
         }
 
-
+        public static void GameStop()
+        {
+            Console.WriteLine("정말 게임을 종료 하시겠습니까?");
+            Console.WriteLine("1, 게임 종료 2,취소");
+            bool stop = true;
+            while (stop)
+            {
+                var userInput = Console.ReadLine();
+                if (userInput == "1")
+                {                    
+                    Console.WriteLine("게임을 종료합니다. 안녕히가세요.");
+                    start = false;
+                    stop = false;
+                }
+                else if (userInput == "2")
+                {
+                    stop = false;
+                    Console.WriteLine("게임종료를 취소합니다.\n" +
+                        "행동을 선택하세요.");
+                }
+                else
+                {
+                    Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
+                }
+            }
+        }
     }
 }

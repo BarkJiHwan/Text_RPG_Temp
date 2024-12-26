@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Temp
             MaxGold = 999_999_999;
             Exp = 0;
             MaxExp = 0;        
-            
+
             Inventory inventory = new Inventory();
         }
 
@@ -50,8 +51,25 @@ namespace Temp
                 $"공격력: {Damage}, 방어력: {Armor} \n" +
                 $"크리티컬확률: {Critical} \n" +
                 $"크리티컬데미지: {CriticalDam} \n" +
-                $"골드: {Gold}\n"+
-                $"경험치: {Exp}");
+                $"골드: {Gold}\n" +
+                $"경험치: {Exp}\n" +
+                $"무기:  \n" +
+                $"갑옷: \n" +
+                $"악세서리1: \n");
+        }
+
+        public void LevelUP()
+        {
+            Level++;
+            Damage += 10;
+            Armor += 3;
+            MaxHealth += 30;
+            Health = MaxHealth;
+            MaxMana += 10;
+            Mana = MaxMana;
+
+            Console.WriteLine($"레벨이 올랐습니다.\n" +
+                $"체력과 마력이 모두 회복됩니다.");
         }
     }
 }

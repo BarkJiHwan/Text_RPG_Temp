@@ -19,9 +19,9 @@ namespace Temp
             Console.WriteLine($"{Name} , {Description}");
         }
 
-        public void BeginningVillage(Player player, bool start)
-        {            
-            while (start)
+        public void BeginningVillage(Player player,bool start)
+        {
+            while (Game.start)
             {
                 Console.WriteLine("\n무엇을 하시겠습니까?");
                 Console.WriteLine("1. 캐릭터 정보 확인");
@@ -37,8 +37,7 @@ namespace Temp
                         StartingVillage(player, start);                        
                         break;
                     case "3":
-                        start = false;
-                        Console.WriteLine("게임을 종료합니다. 안녕히가세요.");
+                        Game.GameStop();                        
                         break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
@@ -47,9 +46,8 @@ namespace Temp
             }
         }
         public void StartingVillage(Player player, bool start) // 그린힐 마을
-        {
-            
-            while (start)
+        {            
+            while (Game.start)
             {
                 Console.WriteLine("무엇을 하시겠습니까?");
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
@@ -73,8 +71,8 @@ namespace Temp
                         ((Field)Game.map.Locations[2]).FirstField(player, start);
                         break;
                     case "6":
-                        start = false;
-                        return;
+                        Game.GameStop();
+                        break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
                         break;
@@ -84,7 +82,7 @@ namespace Temp
         public void SecondVillage(Player player, bool start) // 브라이튼 마을
         {
             
-            while (start)
+            while (Game.start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
                 "4.분수대로 이동, 5.초원으로 이동, 6.대편원으로 이동 7.게임 종료");
@@ -111,18 +109,17 @@ namespace Temp
                         ((Field)Game.map.Locations[5]).SecondField(player, start);
                         break;
                     case "7":
-                        start = false;
+                        Game.GameStop();
                         break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
                         break;
                 }
             }
-
         }
         public void ThirdVillage(Player player, bool start) // 벨 플로라 마을
         {            
-            while (start)
+            while (Game.start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
                 "4.분수대로 이동, 5.대평원으로 이동, 6.플로럴 밸리로 이동 7.게임 종료");
@@ -149,7 +146,7 @@ namespace Temp
                         ((Field)Game.map.Locations[8]).SecondField(player, start);
                         break;
                     case "7":
-                        start = false;
+                        Game.GameStop();
                         break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
@@ -160,7 +157,7 @@ namespace Temp
         public void FourthVillage(Player player, bool start) // 네번째 마을
         {
             
-            while (start)
+            while (Game.start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
                 "4.분수대로 이동, 5.플로럴 밸리로 이동, 6.네번째필드로 이동 7.게임 종료");
@@ -187,7 +184,7 @@ namespace Temp
                         ((Field)Game.map.Locations[11]).SecondField(player, start);
                         break;
                     case "7":
-                        start = false;
+                        Game.GameStop();
                         break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
@@ -196,9 +193,8 @@ namespace Temp
             }
         }
         public void FifthVillage(Player player, bool start) // 다섯번째 마을
-        {
-           
-            while (start)
+        {           
+            while (Game.start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
                 "4.분수대로 이동, 5.네번째필드로 이동, 6.다섯번째필드로 이동 7.게임 종료");
@@ -225,7 +221,7 @@ namespace Temp
                         ((Field)Game.map.Locations[14]).SecondField(player, start);
                         break;
                     case "7":
-                        start = false;
+                        Game.GameStop();
                         break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");

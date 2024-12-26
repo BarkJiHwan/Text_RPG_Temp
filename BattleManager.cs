@@ -57,7 +57,7 @@ namespace Temp
                 Console.WriteLine("4. 도망간다.");
                 switch (Console.ReadLine())
                 {
-                    case "1":                        
+                    case "1":
                         if (enemy.Health > 0)
                         {
                             player.Attack(enemy);

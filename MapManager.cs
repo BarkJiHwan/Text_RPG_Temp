@@ -22,21 +22,20 @@ namespace Temp
 
                 Locations.Add(new Village("브라이튼", "마을 전체가 활기찬 에너지를 풍긴다. 마을 중심에 넓은 광장보인다.",2));//4
                 Locations.Add(new Field("대평원", "그린힐의 초원이 작게 느껴질법한 평원이다..",2));//5
-                Locations.Add(new Dungeon("두번째 던전","",2));//6
+                Locations.Add(new Dungeon("오크군락지", "강력한 오크들이 거주하는 마을이다...", 2));//6
 
                 Locations.Add(new Village("벨 플로라 마을", "아름다운 꽃들로 뒤덮인 평화로운 마을이다.",3));//7
                 Locations.Add(new Field("플로럴 밸리", "꽃처럼 보이는 무언가가 계속 꿈틀거린다...", 3));//8
-                Locations.Add(new Dungeon("세번째 던전", "사냥터", 3));//9
+                Locations.Add(new Dungeon("포식자의 동굴", "무성한 덩굴 사이로 아름다운 꽃밭이 보인다. 약간 달콤한 냄새가 나는 것 같다..", 3));//9
 
-                Locations.Add(new Village("네번째 마을", "", 4));//10
-                Locations.Add(new Field("네번째 필드", "사냥터",4));//11
-                Locations.Add(new Dungeon("네번째 던전", "사냥터",4));//12
+                Locations.Add(new Village("크림슨포트","붉은 벽돌 성곽으로 둘러싸인 견고해 보이는 성이다.", 4));//10
+                Locations.Add(new Field("다크우드 포레스트", "어둠의 마법이 짖게 깔린 숲이다.. 몬스터들의 괴성이 들린다.", 4));//11
+                Locations.Add(new Dungeon("실종 된 마법사의 집", "옛 날에 실종 된 마법사의 집이다. 지하로 내려가는 입구가 있다..",4));//12
 
-                Locations.Add(new Village("다섯번째 마을", "",5));//13
-                Locations.Add(new Field("다섯번째 필드", "사냥터",5));//14
-                Locations.Add(new Dungeon("다섯번째 던전", "사냥터",5));//15
-            }
-            
+                Locations.Add(new Village("솔라템플","마을 중앙에 웅장한 신전이 빛을 밝히는 신성한 마을이다.",5));//13
+                Locations.Add(new Field("최후의 격전지", "끝없이 쏟아지는 몬스터들..",5));//14
+                Locations.Add(new Dungeon("소환의 진", "이곳에서 몬스터들이 계속 소환되고 있다..",5));//15
+            }            
         }
     }
 }
