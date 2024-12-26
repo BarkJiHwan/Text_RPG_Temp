@@ -44,34 +44,34 @@ namespace Temp
         //}
         public void FirstQuarter(Player player) 
         {
-            Console.WriteLine($"{player._Name} : 제 이름은 {player._Name} 입니다.");
+            Console.WriteLine($"{player.Name} : 제 이름은 {player.Name} 입니다.");
             Console.ReadKey(true);
-            Console.WriteLine($"마을촌장 : {player._Name}..?  \'처음듣는 이름이지만 낯설지 않은 기분이군...\' ");
+            Console.WriteLine($"마을촌장 : {player.Name}..?  \'처음듣는 이름이지만 낯설지 않은 기분이군...\' ");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : 왜.. 그러십니까?");
+            Console.WriteLine($"{player.Name} : 왜.. 그러십니까?");
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : 허허 아닐세 저기 보이는 마을이 우리 \'그린힐\'마을일세");
             Game.map.Locations[0].MapNamespace();
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : 윽...");
+            Console.WriteLine($"{player.Name} : 윽...");
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : ?!.. 괜찮은가? ");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : 괜찮습니다.. 조금 어지러워서요. \'분명 처음 보는 풍경일텐데 낯설지가 않아...\'");
+            Console.WriteLine($"{player.Name} : 괜찮습니다.. 조금 어지러워서요. \'분명 처음 보는 풍경일텐데 낯설지가 않아...\'");
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : 다행이구만 깨어난지 얼마되지 않아서 그럴 수 있으니 마을 좀 둘러보다 우리집으로 오게나 \n" +
                 "마을은 안전하지만 마을 밖에는 몬스터들이 많으니 준비 없이 섣불리 나가지 말게");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : 몬스터라니...");
+            Console.WriteLine($"{player.Name} : 몬스터라니...");
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : 마을안쪽으로는 몬스터들이 들어오지 못하지만 마을밖에는\n" +
                 "어디선가 몬스터들이 계속 나타나고 있다네...");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : ....");
+            Console.WriteLine($"{player.Name} : ....");
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : 허허 생각을 정리할 시간이 필요할테니 생각을 정리하고 우리집으로 오게나");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : ..알겠습니다.");
+            Console.WriteLine($"{player.Name} : ..알겠습니다.");
             Console.ReadKey(true);
             Console.Clear();
             Console.WriteLine("마을 촌장은 돌아가고 혼자 남은 주인공은 근처의 밴치에 앉아 혼란스러운 마음을 정리하기 시작한다.\n" +
@@ -85,25 +85,25 @@ namespace Temp
         }
         public void FirstQuarter2(Player player)
         {
-            Console.WriteLine($"{player._Name} : 제 이름은 {player._Name}입니다. ");
+            Console.WriteLine($"{player.Name} : 제 이름은 {player.Name}입니다. ");
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : 알겠네. 입구에 자네 이름을 말해둘테니 언제든 들려 주게나..");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : .. 알겠습니다.");
+            Console.WriteLine($"{player.Name} : .. 알겠습니다.");
             Console.WriteLine("마을 촌장은 돌아가고 혼자 남은 주인공은 들판에 앉아 혼란스러운 마음을 정리하기 시작한다.\n" +
                 " 그는 전이된 충격과 낯선 환경에 대한 불안감을 느끼며 깊은 생각에 잠긴다. \n" +
                 "차가운 바람이 그의 얼굴을 스치고 지나간다.\n" +
                 " 주인공은 자신이 왜 이곳에 있게 되었는지, 앞으로 어떤 여정을 걷게 될지 고민하며 자신을 다독인다.\n");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : 분명.. 몬스터라고 했지?");
+            Console.WriteLine($"{player.Name} : 분명.. 몬스터라고 했지?");
             Console.ReadKey(true);
             Console.WriteLine("이곳은 비교적 안전하지만, 밖에는 몬스터들이 도사리고 있는 위험한 세상이 기다리고 있다.\n" +
                 "주인공은 이제 이 새로운 세상에서 살아남기 위해 자신을 다잡는다.\n");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : 재미있겠는걸?");
-            Console.WriteLine($"{player._Name} : 일단 마을로 가야겠군");
+            Console.WriteLine($"{player.Name} : 재미있겠는걸?");
+            Console.WriteLine($"{player.Name} : 일단 마을로 가야겠군");
             Console.ReadKey(true);
-            Console.WriteLine($"{player._Name} : 주인공은 결의에 찬 표정으로 마음을 다잡으며 촌장이 사라진 길을 따라간다.\n " +
+            Console.WriteLine($"{player.Name} : 주인공은 결의에 찬 표정으로 마음을 다잡으며 촌장이 사라진 길을 따라간다.\n " +
                 $"그의 눈빛에는 강한 의지가 담겨있다.");
             Console.ReadKey(true);
         }

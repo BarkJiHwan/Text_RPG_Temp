@@ -52,7 +52,7 @@ namespace Temp
             }
 
             Enemy CopyEnemy = _enemies[num];
-            return new Enemy(CopyEnemy._Name, CopyEnemy._Health, CopyEnemy._Damage, CopyEnemy._Armor, CopyEnemy._Gold,CopyEnemy._Exp);
+            return new Enemy(CopyEnemy.Name, CopyEnemy.Health, CopyEnemy.Damage, CopyEnemy.Armor, CopyEnemy.Gold,CopyEnemy.Exp);
         }
 
         //public Enemy EnemySeting(Enemy enemy)

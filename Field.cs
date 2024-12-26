@@ -10,10 +10,10 @@ namespace Temp
     
     internal class Field : Location
     {
-        public int FieldNumber { get; protected set; }
-        public Field(string name, string description) : base(name, description)
+        
+        public Field(string name, string description, int maptype) : base(name, description, maptype)
         {
-            FieldNumber = 0;
+            
         }
 
         public override void MapNamespace()
@@ -22,10 +22,9 @@ namespace Temp
         }
 
         public void FirstField(Player player,bool start) //첫번째 필드 (사냥터)
-        {
-            FieldNumber = 1;
-            Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(FieldNumber);
-            BattleManager.Fight(player, enemyRnadomGet);
+        {            
+            Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
+            BattleManager.Fight(player, enemyRnadomGet,start);
             while (enemyRnadomGet != null)
             {
                 Console.WriteLine("전투가 끝났습니다. 다음 마을이 보입니다 이동하시겠습니까?");
@@ -37,12 +36,12 @@ namespace Temp
                         player.PlayerStats();
                         break;
                     case "2":
-                        ((Village)Game.map.Locations[0]).MapNamespace();
-                        ((Village)Game.map.Locations[0]).StartingVillage(player, start);
+                        ((Village)Game.map.Locations[1]).MapNamespace();
+                        ((Village)Game.map.Locations[1]).StartingVillage(player, start);
                         break;
                     case "3":
-                        ((Village)Game.map.Locations[3]).MapNamespace();
-                        ((Village)Game.map.Locations[3]).SecondVillage(player, start);
+                        ((Village)Game.map.Locations[4]).MapNamespace();
+                        ((Village)Game.map.Locations[4]).SecondVillage(player, start);
                         break;
                     case "4":
                         FirstField(player, start);
@@ -58,9 +57,9 @@ namespace Temp
         }
         public void SecondField(Player player, bool start) //두번째 필드 (사냥터)
         {
-            FieldNumber = 2;
-            Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(FieldNumber);
-            BattleManager.Fight(player, enemyRnadomGet);
+            
+            Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
+            BattleManager.Fight(player, enemyRnadomGet,start);
             while (enemyRnadomGet != null)
             {
                 Console.WriteLine("전투가 끝났습니다. 다음 마을이 보입니다 이동하시겠습니까?");
@@ -72,12 +71,12 @@ namespace Temp
                         player.PlayerStats();
                         break;
                     case "2":
-                        ((Village)Game.map.Locations[3]).MapNamespace();
-                        ((Village)Game.map.Locations[3]).SecondVillage(player, start);
+                        ((Village)Game.map.Locations[4]).MapNamespace();
+                        ((Village)Game.map.Locations[4]).SecondVillage(player, start);
                         break;
                     case "3":
-                        ((Village)Game.map.Locations[6]).MapNamespace();
-                        ((Village)Game.map.Locations[6]).SecondVillage(player, start);
+                        ((Village)Game.map.Locations[7]).MapNamespace();
+                        ((Village)Game.map.Locations[7]).ThirdVillage(player, start);
                         break;
                     case "4":
                         SecondField(player, start);

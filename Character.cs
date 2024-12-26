@@ -9,32 +9,41 @@ namespace Temp
 {
     public abstract class Character
     {
-        public string _Name { get; set; }
-        public int _NumBer {  get; set; }
-        public int _Health { get; set; }
-        public int _Mana { get; set; }
-        public int _MaxHealth { get; set; }
-        public int _MaxMana { get; set; }
-        public int _Gold { get; set; }
-        public int _maxGold { get; set; }
-        public double _Critical { get; set; }
-        public double _CriticalDam { get; set; }
-        public int _Damage { get; set; }
-        public int _Armor { get; set; }
-        public int _Level { get; set; }
-        public int _Exp { get; set; }
-        public int _maxExp { get; set; }
-        public bool _isPlayerState { get; set; } //죽었니~ 살앗니~?
-        static int enemyCount = 0;
+        public string Name { get; set; }
+        public int Type {  get; set; }
+        public int Health { get; set; }
+        public int Mana { get; set; }
+        public int MaxHealth { get; set; }
+        public int MaxMana { get; set; }
+        public int Gold { get; set; }
+        public int MaxGold { get; set; }
+        public double Critical { get; set; }
+        public double CriticalDam { get; set; }
+        public int Damage { get; set; }
+        public int Armor { get; set; }
+        public int Level { get; set; }
+        public int Exp { get; set; }
+        public int MaxExp { get; set; }
+        public bool IsPlayerState { get; set; } //죽었니~ 살앗니~?
+        static int EnemyCount = 0;
         protected Character(string name, int health, int damage, int armor)
         { 
-            _Name = name;
-            _Health = health;   
-            _MaxHealth = damage;
-            _Mana = armor;
+            Name = name;
+            Health = health;   
+            MaxHealth = damage;
+            Mana = armor;
         }
 
-        public abstract void Attack(Character target);
+        public void Attack(Character target)        
+        {
+            int attackDamag = Damage - target.Armor;
+            if (attackDamag < 0)
+            {
+                attackDamag = 0;
+            }
+            target.Health -= attackDamag;
+            Console.WriteLine($"{Name}이가 {target.Name}에게 {attackDamag}피해를 줬습니다.");
+        }
     }
 
 }

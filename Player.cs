@@ -12,44 +12,46 @@ namespace Temp
         public bool Mainstory;
         public Player(string name) : base(name, 100, 10, 5)
         {
-            _Name = name;
-            _Level = 1;
-            _Health = 100;
-            _Damage = 10;
-            _Armor = 5;
-            _Mana =50 ;
-            _MaxHealth = _Health;
-            _MaxMana = _Mana;
-            _Critical = 5;
-            _CriticalDam = (_Damage * 1.5);
-            _Gold = 0;
+            Name = name;
+            Level = 1;
+            Health = 100;
+            Damage = 10;
+            Armor = 5;
+            Mana =50 ;
+            MaxHealth = Health;
+            MaxMana = Mana;
+            Critical = 5;
+            CriticalDam = (Damage * 1.5);
+            Gold = 0;
             
-            _maxGold = 999_999_999;
-            _Exp = 0;
-            _maxExp = 0;            
+            MaxGold = 999_999_999;
+            Exp = 0;
+            MaxExp = 0;        
+            
+            Inventory inventory = new Inventory();
         }
 
-        public override void Attack(Character target)
-        {
-            int actualDamage = _Damage - target._Armor;
-            if (actualDamage < 0)
-            {
-                actualDamage = 0;
-            }
-            target._Health-= actualDamage;
-            Console.WriteLine($"{_Name}이 {target._Name}에게 {actualDamage}의 데미지를 줌");
+        //public override void Attack(Character target)
+        //{
+        //    int actualDamage = Damage - target.Armor;
+        //    if (actualDamage < 0)
+        //    {
+        //        actualDamage = 0;
+        //    }
+        //    target.Health-= actualDamage;
+        //    Console.WriteLine($"{Name}이 {target.Name}에게 {actualDamage}의 데미지를 줌");
 
-        }
+        //}
 
         public void PlayerStats()
         {
-            Console.WriteLine($"이름: {_Name}, 레벨: {_Level} \n" +
-                $"체력: {_Health}, 마력: {_Mana}, \n" +
-                $"공격력: {_Damage}, 방어력: {_Armor} \n" +
-                $"크리티컬확률: {_Critical} \n" +
-                $"크리티컬데미지: {_CriticalDam} \n" +
-                $"골드: {_Gold}\n"+
-                $"경험치: {_Exp}");
+            Console.WriteLine($"이름: {Name}, 레벨: {Level} \n" +
+                $"체력: {Health}, 마력: {Mana}, \n" +
+                $"공격력: {Damage}, 방어력: {Armor} \n" +
+                $"크리티컬확률: {Critical} \n" +
+                $"크리티컬데미지: {CriticalDam} \n" +
+                $"골드: {Gold}\n"+
+                $"경험치: {Exp}");
         }
     }
 }

@@ -10,11 +10,8 @@ namespace Temp
 {
     internal class Village : Location
     {
-        public int VillageNumber { get; protected set; }
-
-        public Village(string name, string description) : base(name, description)
+        public Village(string name, string description, int maptype) : base(name, description, maptype)
         {
-            VillageNumber =0;
         }
 
         public override void MapNamespace()
@@ -22,10 +19,36 @@ namespace Temp
             Console.WriteLine($"{Name} , {Description}");
         }
 
-
+        public void BeginningVillage(Player player, bool start)
+        {            
+            while (start)
+            {
+                Console.WriteLine("\n무엇을 하시겠습니까?");
+                Console.WriteLine("1. 캐릭터 정보 확인");
+                Console.WriteLine("2. 마을 이동");
+                Console.WriteLine("3. 게임 종료");
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        player.PlayerStats();
+                        break;
+                    case "2":
+                        Game.map.Locations[1].MapNamespace();
+                        StartingVillage(player, start);                        
+                        break;
+                    case "3":
+                        start = false;
+                        Console.WriteLine("게임을 종료합니다. 안녕히가세요.");
+                        break;
+                    default:
+                        Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
+                        break;
+                }
+            }
+        }
         public void StartingVillage(Player player, bool start) // 그린힐 마을
         {
-            VillageNumber = 1;
+            
             while (start)
             {
                 Console.WriteLine("무엇을 하시겠습니까?");
@@ -46,8 +69,8 @@ namespace Temp
                         Console.WriteLine("분수대"); //분수대 추가해야 됨                        
                         break;
                     case "5":
-                        ((Field)Game.map.Locations[1]).MapNamespace();
-                        ((Field)Game.map.Locations[1]).FirstField(player, start);
+                        ((Field)Game.map.Locations[2]).MapNamespace();
+                        ((Field)Game.map.Locations[2]).FirstField(player, start);
                         break;
                     case "6":
                         start = false;
@@ -60,7 +83,7 @@ namespace Temp
         }
         public void SecondVillage(Player player, bool start) // 브라이튼 마을
         {
-            VillageNumber = 2;
+            
             while (start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
@@ -80,12 +103,12 @@ namespace Temp
                         Console.WriteLine("분수대");
                         break;
                     case "5":
-                        ((Field)Game.map.Locations[1]).MapNamespace();
-                        ((Field)Game.map.Locations[1]).FirstField(player, start);
+                        ((Field)Game.map.Locations[2]).MapNamespace();
+                        ((Field)Game.map.Locations[2]).FirstField(player, start);
                         break;
                     case "6":
-                        ((Field)Game.map.Locations[4]).MapNamespace();
-                        ((Field)Game.map.Locations[4]).SecondField(player, start);
+                        ((Field)Game.map.Locations[5]).MapNamespace();
+                        ((Field)Game.map.Locations[5]).SecondField(player, start);
                         break;
                     case "7":
                         start = false;
@@ -98,12 +121,11 @@ namespace Temp
 
         }
         public void ThirdVillage(Player player, bool start) // 벨 플로라 마을
-        {
-            VillageNumber = 3;
+        {            
             while (start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
-                "4.분수대로 이동, 5.초원으로 이동, 6.대편원으로 이동 7.게임 종료");
+                "4.분수대로 이동, 5.대평원으로 이동, 6.플로럴 밸리로 이동 7.게임 종료");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -119,12 +141,12 @@ namespace Temp
                         Console.WriteLine("분수대");
                         break;
                     case "5":
-                        ((Field)Game.map.Locations[1]).MapNamespace();
-                        ((Field)Game.map.Locations[1]).FirstField(player, start);
+                        ((Field)Game.map.Locations[5]).MapNamespace();
+                        ((Field)Game.map.Locations[5]).FirstField(player, start);
                         break;
                     case "6":
-                        ((Field)Game.map.Locations[4]).MapNamespace();
-                        ((Field)Game.map.Locations[4]).SecondField(player, start);
+                        ((Field)Game.map.Locations[8]).MapNamespace();
+                        ((Field)Game.map.Locations[8]).SecondField(player, start);
                         break;
                     case "7":
                         start = false;
@@ -135,13 +157,13 @@ namespace Temp
                 }
             }
         }
-        public void FourthVillage(Player player, bool start) // 브라이튼 마을
+        public void FourthVillage(Player player, bool start) // 네번째 마을
         {
-            VillageNumber = 4;
+            
             while (start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
-                "4.분수대로 이동, 5.초원으로 이동, 6.대편원으로 이동 7.게임 종료");
+                "4.분수대로 이동, 5.플로럴 밸리로 이동, 6.네번째필드로 이동 7.게임 종료");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -157,12 +179,12 @@ namespace Temp
                         Console.WriteLine("분수대");
                         break;
                     case "5":
-                        ((Field)Game.map.Locations[1]).MapNamespace();
-                        ((Field)Game.map.Locations[1]).FirstField(player, start);
+                        ((Field)Game.map.Locations[8]).MapNamespace();
+                        ((Field)Game.map.Locations[8]).FirstField(player, start);
                         break;
                     case "6":
-                        ((Field)Game.map.Locations[4]).MapNamespace();
-                        ((Field)Game.map.Locations[4]).SecondField(player, start);
+                        ((Field)Game.map.Locations[11]).MapNamespace();
+                        ((Field)Game.map.Locations[11]).SecondField(player, start);
                         break;
                     case "7":
                         start = false;
@@ -173,13 +195,13 @@ namespace Temp
                 }
             }
         }
-        public void FifthVillage(Player player, bool start) // 브라이튼 마을
+        public void FifthVillage(Player player, bool start) // 다섯번째 마을
         {
-            VillageNumber = 5;
+           
             while (start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
-                "4.분수대로 이동, 5.초원으로 이동, 6.대편원으로 이동 7.게임 종료");
+                "4.분수대로 이동, 5.네번째필드로 이동, 6.다섯번째필드로 이동 7.게임 종료");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -195,12 +217,12 @@ namespace Temp
                         Console.WriteLine("분수대");
                         break;
                     case "5":
-                        ((Field)Game.map.Locations[1]).MapNamespace();
-                        ((Field)Game.map.Locations[1]).FirstField(player, start);
+                        ((Field)Game.map.Locations[11]).MapNamespace();
+                        ((Field)Game.map.Locations[11]).FirstField(player, start);
                         break;
                     case "6":
-                        ((Field)Game.map.Locations[4]).MapNamespace();
-                        ((Field)Game.map.Locations[4]).SecondField(player, start);
+                        ((Field)Game.map.Locations[14]).MapNamespace();
+                        ((Field)Game.map.Locations[14]).SecondField(player, start);
                         break;
                     case "7":
                         start = false;

@@ -41,10 +41,10 @@ namespace Temp
             }
         }
 
-        public static void Fight(Player player, Enemy enemy)
+        public static void Fight(Player player, Enemy enemy ,bool start)
         {
             Random Random = new Random();
-            Console.WriteLine($"{enemy._Name} 발견 싸우시겠습니까? ");
+            Console.WriteLine($"{enemy.Name} 발견 싸우시겠습니까? ");
 
             bool isFighting = BattleManager.FightSeting();
             
@@ -58,13 +58,13 @@ namespace Temp
                 switch (Console.ReadLine())
                 {
                     case "1":                        
-                        if (enemy._Health > 0)
+                        if (enemy.Health > 0)
                         {
                             player.Attack(enemy);
-                            if (enemy._Health > 0)
+                            if (enemy.Health > 0)
                             {
                                 enemy.Attack(player);
-                                if (player._Health < 0)
+                                if (player.Health < 0)
                                 {
                                     Console.WriteLine("당신은 죽었습니다");
                                     Console.WriteLine("3초 후 태초의 장소에서 부활합니다.");
@@ -72,29 +72,28 @@ namespace Temp
                                     Thread.Sleep(1000);
                                     Console.WriteLine("2...");
                                     Console.WriteLine("소지금의 절반을 몬스터가 훔쳐갑니다.");
-                                    player._Gold = player._Gold / 2;
+                                    player.Gold = player.Gold / 2;
                                     Thread.Sleep(1000);
                                     Console.WriteLine("1... \t");
-                                    Thread.Sleep(1000);                                    
-                                    //첫번째 맵으로 이동하는 로직 추가하기.
-
+                                    Thread.Sleep(1000);
+                                    ((Village)Game.map.Locations[0]).BeginningVillage(player,start);
                                 }
                             }
                             else
                             {
                                 Console.WriteLine("승리");
-                                player._Exp += enemy._Exp;
-                                player._Gold += enemy._Gold;
-                                Console.WriteLine($"경험치 :{enemy._Exp}획득, 골드: {enemy._Gold}획득,");
+                                player.Exp += enemy.Exp;
+                                player.Gold += enemy.Gold;
+                                Console.WriteLine($"경험치 :{enemy.Exp}획득, 골드: {enemy.Gold}획득,");
                                 isFighting = false;
                             }
                         }
                         else
                         {
                             Console.WriteLine("승리");
-                            player._Exp += enemy._Exp;
-                            player._Gold += enemy._Gold;
-                            Console.WriteLine($"경험치 :{enemy._Exp}획득, 골드: {enemy._Gold}획득,");
+                            player.Exp += enemy.Exp;
+                            player.Gold += enemy.Gold;
+                            Console.WriteLine($"경험치 :{enemy.Exp}획득, 골드: {enemy.Gold}획득,");
                             isFighting = false;
                         }
                         break;

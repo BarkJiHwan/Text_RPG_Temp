@@ -11,7 +11,7 @@ namespace Temp
     internal class Dungeon : Location
     {
 
-        public Dungeon(string name, string description) : base(name, description)
+        public Dungeon(string name, string description, int maptype) : base(name, description, maptype)
         {
         }
         public override void MapNamespace()

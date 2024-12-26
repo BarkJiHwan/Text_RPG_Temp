@@ -16,9 +16,10 @@ namespace Temp
         public static MapManager map { get; private set; } = new MapManager();
         public static EnemyManager enemy { get; private set; } = new EnemyManager();
         public static Story story { get; private set; } = new Story();
+        public bool start = true;
         public Game()
-        { 
-            
+        {
+
         }
         public void Start()
         {
@@ -27,7 +28,7 @@ namespace Temp
             Console.WriteLine("2번을 선택할 경우 당장 메인스토리를 따라갈 수 없지만 분기별로 메인스토리에 접근할 수 있습니다.");
             Console.WriteLine("현재 2번 스토리는 구현되지 않아 2번을 선택 후 촌장집에 가면 메인스토리가 실행됩니다.");
             Console.WriteLine("1. 촌장을 따라 간다, 2. 촌장을 따라가지 않는다., 3. 게임 종료");
-            bool start = true;
+
             while (start)
             {
 
@@ -48,7 +49,7 @@ namespace Temp
                         UserToName();
                         player.Mainstory = true;
                         story.FirstQuarter(player);
-                        ((Village)map.Locations[0]).StartingVillage(player,start);
+                        ((Village)map.Locations[1]).StartingVillage(player, start);
                         break;
                     case "2":
                         Console.Clear();
@@ -64,7 +65,7 @@ namespace Temp
                         Console.WriteLine($"??? : 제..이름....");
                         UserToName();
                         story.FirstQuarter2(player);
-                        MainLoop(start);
+                        ((Village)map.Locations[0]).BeginningVillage(player, start);
                         start = false;
                         break;
                     case "3":
@@ -84,37 +85,11 @@ namespace Temp
             while (playerName.Length < 2)
             {
                 Console.Write("두글자 이상 입력해 주세요 : ");
-                playerName = Console.ReadLine();                
+                playerName = Console.ReadLine();
             }
-            player = new Player(playerName);            
+            player = new Player(playerName);
         }
 
-        public void MainLoop(bool start)
-        {
-            while (start)
-            {
-                Console.WriteLine("\n무엇을 하시겠습니까?");
-                Console.WriteLine("1. 캐릭터 정보 확인");
-                Console.WriteLine("2. 마을 이동");
-                Console.WriteLine("3. 게임 종료");
-                switch (Console.ReadLine())
-                {
-                    case "1":
-                        player.PlayerStats();
-                        break;
-                    case "2":
-                        ((Village)map.Locations[0]).MapNamespace();
-                        ((Village)map.Locations[0]).StartingVillage(player,start);
-                        break;
-                    case "3":                        
-                        start = false;
-                        Console.WriteLine("게임을 종료합니다. 안녕히가세요.");
-                        break ;
-                    default:
-                        Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");                        
-                        break;
-                }
-            }
-        }        
+
     }
 }
