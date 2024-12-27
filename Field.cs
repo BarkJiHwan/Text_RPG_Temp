@@ -51,7 +51,7 @@ namespace Temp
             Random random = new Random();
             while (Game.start)
             {
-                int rd = random.Next(0, 5);
+                int rd = random.Next(0, 10);
                 Console.WriteLine("이동중..");
                 Thread.Sleep(1000);                
                 if (rd == 0)

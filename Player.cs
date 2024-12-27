@@ -32,8 +32,114 @@ namespace Temp
             MaxExp = 0;
 
             playerinventory = new Inventory();
-            Equipment = new Equipment();
-            
+            Equipment = new Equipment();            
+        }
+
+        public void EquimentItem(Item item)
+        {
+            if (item.Tpye == ItemTpye.Weapon)
+            {
+                Equipment.Equip[ItemTpye.Weapon] = item;
+            }
+            else if (item.Tpye == ItemTpye.Armor)
+            {
+                Equipment.Equip[ItemTpye.Armor] = item;
+            }
+            else if (item.Tpye == ItemTpye.Accessory)
+            {
+                Equipment.Equip[ItemTpye.Accessory] = item;
+            }
+        }
+
+        public void ReturnInven(Player player)
+        {
+            if (Equipment.Equip[ItemTpye.Weapon] != null)
+            {
+                playerinventory.inventories.Add(Equipment.Equip[ItemTpye.Weapon]);
+                Equipment.Equip[ItemTpye.Weapon].Unequip(player);
+            }
+            else if (Equipment.Equip[ItemTpye.Armor] != null)
+            {
+                playerinventory.inventories.Add(Equipment.Equip[ItemTpye.Armor]);
+                Equipment.Equip[ItemTpye.Armor].Unequip(player);
+            }
+            else if (Equipment.Equip[ItemTpye.Accessory] != null)
+            {
+                playerinventory.inventories.Add(Equipment.Equip[ItemTpye.Accessory]);
+                Equipment.Equip[ItemTpye.Accessory].Unequip(player);
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        public void EquimentGetItem(Player player, bool start)
+        {
+            Console.WriteLine("장비창");
+            Console.WriteLine("무엇을 빼시겠습니까?");
+            Console.WriteLine($"\n" +
+                $"1번. 무기 : {Equipment.Equip[ItemTpye.Weapon]?.Name}\n" +
+                $"2번. 방어구 : {Equipment.Equip[ItemTpye.Armor]?.Name}\n" +
+                $"3번. 장신구 : {Equipment.Equip[ItemTpye.Accessory]?.Name}\n");
+            Console.WriteLine("아무키나 누르면 장비창을 나옵니다");
+            while (start)
+            {
+                var input = Console.ReadLine();
+                if (input == "1")
+                {
+                    if (Equipment.Equip[ItemTpye.Weapon] != null)
+                    {
+                        Item item = Equipment.Equip[ItemTpye.Weapon];
+                        item.Unequip(player);
+                        EquimentItem(item);
+                        playerinventory.inventories.Add(item);
+                        Equipment.Equip[ItemTpye.Weapon] = null;
+                        start = false;
+                    }
+                    else if (Equipment.Equip[ItemTpye.Weapon] == null)
+                    {
+                        Console.WriteLine("무기창이 비었습니다.");
+                    }
+                }
+                else if (input == "2")
+                {
+                    if (Equipment.Equip[ItemTpye.Armor] != null)
+                    {
+                        Item item = Equipment.Equip[ItemTpye.Armor];
+                        item.Unequip(player);
+                        EquimentItem(item);
+                        playerinventory.inventories.Add(item);
+                        Equipment.Equip[ItemTpye.Armor] = null;
+                        start = false;
+                    }
+                    else if (Equipment.Equip[ItemTpye.Armor] == null)
+                    {
+                        Console.WriteLine("방어구창이 비었습니다.");                        
+                    }
+                }
+                else if (input == "3")
+                {
+                    if (Equipment.Equip[ItemTpye.Accessory] != null)
+                    {
+                        Item item = Equipment.Equip[ItemTpye.Accessory];
+                        item.Unequip(player);
+                        EquimentItem(item);
+                        playerinventory.inventories.Add(item);
+                        Equipment.Equip[ItemTpye.Accessory] = null;
+                        start = false;
+                    }
+                    else if (Equipment.Equip[ItemTpye.Accessory] == null)
+                    {
+                        Console.WriteLine("장신구창이 비었습니다.");                        
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("장비창 나가기");
+                    start = false;
+                }
+            }
         }
 
         //public override void Attack(Character target)
@@ -56,7 +162,7 @@ namespace Temp
                 $"크리티컬확률: {Critical} \n" +
                 $"크리티컬데미지: {CriticalDam} \n" +
                 $"골드: {Gold}\n" +
-                $"경험치: {Exp}\n");
+                $"경험치: {Exp}\n");                
         }
 
         public void LevelUP()
@@ -75,9 +181,9 @@ namespace Temp
 
         public void ItemGet(Item item)
         {            
-            playerinventory.inventories.Add(item);
+            playerinventory.inventories.Add(item); //인벤토리의 앞으로 착착 쌓임
         }
-        public void PrintInven()
+        public void PrintInven() //인벤토리에 뭐가 있는지 보여주는 메서드
         {
             int Number=0;
             foreach (var item in playerinventory.inventories)

@@ -69,7 +69,6 @@ namespace Temp
                     ((Field)Game.map.Locations[2]).FirstField(player, stop);
                     stop = false;
                 }
-
                 else
                 {
                     Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
@@ -89,7 +88,7 @@ namespace Temp
                     Console.WriteLine("던전 탐험중..");
                     Thread.Sleep(1000);
 
-                    int rd = random.Next(1);
+                    int rd = random.Next(10);
                     if (rd == 0) //보물상자 발견
                     {
                         TreasureChest(player, mapType);

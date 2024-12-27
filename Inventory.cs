@@ -20,56 +20,84 @@ namespace Temp
             }
         }
 
+
+
         public void SetingItem(Player player)
         {
             Console.WriteLine("몇번째 아이템을 사용 하시겠습니까?\n" +
                 "첫번째 아이템은 0부터 시작합니다.");
             Console.WriteLine("숫자 이외의 키 입력시 인벤토리 종료");
-            bool itemCheck = int.TryParse(Console.ReadLine(), out int InventoyrNumber);
+            bool itemCheck = int.TryParse(Console.ReadLine(), out int InventoryIndex);
             if (itemCheck == false)
             {
                 Console.WriteLine("인벤토리 나가기");
             }
             else
             {
-                if (inventories != null)
+                if (player.playerinventory.inventories.Count != 0)
                 {
-                    if (InventoyrNumber >= 0 && InventoyrNumber < inventories.Count)
-                    {
-                        Item item = inventories[InventoyrNumber];
+                        Item item = inventories[InventoryIndex];
                         if (item.Tpye == ItemTpye.Weapon)
                         {
-                            item.equip(player);
-                            inventories.RemoveAt(InventoyrNumber);
+                            if (player.Equipment.Equip[ItemTpye.Weapon] != null)
+                            {
+                                player.ReturnInven(player);
+                                player.EquimentItem(item); //장비창에 장착 시킴
+                                item.Equip(player); //장비에 따른 플레이어 능력치 증가
+                                inventories.RemoveAt(InventoryIndex);
+                            }
+                            else if (player.Equipment.Equip[ItemTpye.Weapon] == null)
+                            {
+                                player.EquimentItem(item);
+                                item.Equip(player);
+                                inventories.RemoveAt(InventoryIndex);
+                            }
                         }
                         else if (item.Tpye == ItemTpye.Armor)
                         {
-                            item.equip(player);
-                            inventories.RemoveAt(InventoyrNumber);
+                            if (player.Equipment.Equip[ItemTpye.Armor] != null)
+                            {
+                                player.ReturnInven(player);
+                                player.EquimentItem(item);
+                                item.Equip(player);
+                                inventories.RemoveAt(InventoryIndex);
+                            }
+                            else if (player.Equipment.Equip[ItemTpye.Armor] == null)
+                            {
+                                player.EquimentItem(item);
+                                item.Equip(player);
+                                inventories.RemoveAt(InventoryIndex);
+                            }
                         }
                         else if (item.Tpye == ItemTpye.Accessory)
                         {
-                            item.equip(player);
-                            inventories.RemoveAt(InventoyrNumber);
+                            if (player.Equipment.Equip[ItemTpye.Accessory] != null)
+                            {
+                                player.ReturnInven(player);                                
+                                player.EquimentItem(item);
+                                item.Equip(player);
+                                inventories.RemoveAt(InventoryIndex);
+                            }
+                            else if (player.Equipment.Equip[ItemTpye.Accessory] == null)
+                            {
+                                player.EquimentItem(item);
+                                item.Equip(player);
+                                inventories.RemoveAt(InventoryIndex);
+                            }
                         }
                         else if (item.Tpye == ItemTpye.Consumable)
                         {
-                            item.equip(player);
-                            inventories.RemoveAt(InventoyrNumber);
+                            item.Equip(player);
+                            inventories.RemoveAt(InventoryIndex);
                         }
                         else
                         {
                             Console.WriteLine("기타아이템은 사용할 수 없습니다.");
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("아이템이 없습니다.");
-                    }
-                }
+                    }                   
                 else
                 {
-                    Console.WriteLine("인벤토리가 비었습니다.");
+                    Console.WriteLine("해당 번수의 인벤토리가 비었습니다.");
                 }
             }
         }

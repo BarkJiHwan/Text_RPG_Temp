@@ -25,9 +25,6 @@ namespace Temp
         public void Start()
         {
             story.StratStory();
-            Console.WriteLine("1번을 선택할 경우 메인스토리를 따라가게 됩니다.");
-            Console.WriteLine("2번을 선택할 경우 당장 메인스토리를 따라갈 수 없지만 분기별로 메인스토리에 접근할 수 있습니다.");
-            Console.WriteLine("현재 2번 스토리는 구현되지 않아 2번을 선택 후 촌장집에 가면 메인스토리가 실행됩니다.");
             Console.WriteLine("1. 촌장을 따라 간다, 2. 촌장을 따라가지 않는다., 3. 게임 종료");
             while (start)
             {

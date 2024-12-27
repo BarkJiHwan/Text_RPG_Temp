@@ -177,7 +177,7 @@ namespace Temp
         public void ItemRooting(Player player, int mapNum)
         {
             //인자값으로 맵 번호를 받아서 해당 맵 번호와 일치하는 아이템을 표시해줌
-            //랜덤으로 무기,방어구,악세서리, 소비아이템 중 한개 나옴
+            //랜덤으로 무기,방어구,악세서리, 소비아이템 중 한개가 나옴
             Random random = new Random();
             int itemType = random.Next(4);
             int itemNumber = random.Next(4);
@@ -221,7 +221,7 @@ namespace Temp
             else if (itemType == 2)
             {
                 Console.WriteLine(Game.itemManager._AccessoryItems[itemNumber].Name);
-                itemCopy = new AccessoryItem(_AccessoryItems[itemNumber].Name, _AccessoryItems[itemNumber].Damage, _AccessoryItems[itemNumber].Armor, _AccessoryItems[itemNumber].Health, _AccessoryItems[itemNumber].Mana, _AccessoryItems[itemNumber].Description, _AccessoryItems[itemNumber].Price);
+                itemCopy = new AccessoryItem(_AccessoryItems[itemNumber].Name, _AccessoryItems[itemNumber].Damage, _AccessoryItems[itemNumber].Armor, _AccessoryItems[itemNumber].MaxHealth, _AccessoryItems[itemNumber].MaxMana, _AccessoryItems[itemNumber].Description, _AccessoryItems[itemNumber].Price);
             }
             else
             {
@@ -231,13 +231,13 @@ namespace Temp
             Console.WriteLine($"{itemCopy.Name}아이템을 획득하시겠습니까?\n" +
                 "1번, 획득한다, 2번, 버린다.");
             bool itemRooting = true;
-            var inPut = Console.ReadLine();
             while (itemRooting)
             {
+                var inPut = Console.ReadLine();
                 if (inPut == "1")
                 {
                     Console.WriteLine("아이템을 획득했습니다.");
-                    player.ItemGet(itemCopy);
+                    player.ItemGet(itemCopy); //아이템 획득시 인벤토리로 들어감
                     itemRooting = false;
                 }
                 else if (inPut == "2")

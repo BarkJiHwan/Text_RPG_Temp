@@ -16,7 +16,7 @@ namespace Temp
             MaxMana = maxMana;
         }
 
-        public override void equip(Player player)
+        public override void Equip(Player player)
         {
             Console.WriteLine($"{Name}장착");
             player.Armor += Armor;

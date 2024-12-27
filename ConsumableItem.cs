@@ -15,7 +15,7 @@ namespace Temp
             Health = health;
             Mana = mana;
         }
-        public override void equip(Player player)
+        public override void Equip(Player player)
         {
 
             Console.WriteLine($"{Name}을 사용합니다.");

@@ -41,7 +41,7 @@ namespace Temp
         {
             Console.WriteLine($"이름: {Name}, 타입: {Tpye}, 설명: \n{Description}\n 가격: {Price}");
         }
-        public abstract void equip(Player player);
+        public abstract void Equip(Player player);
         public abstract void Unequip(Player player);
     }
 }
