@@ -74,7 +74,7 @@ namespace Temp
         }
         public void UserToName()
         {
-            Console.WriteLine("??? : \'내 이름이 뭐였지..\'");
+            Console.WriteLine("??? : \'내.. 이름? 이름이 뭐였지?\'");
             Console.Write("이름을 입력해주세요 : ");
             string playerName = Console.ReadLine();
             while (playerName.Length < 2)

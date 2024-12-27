@@ -25,7 +25,7 @@ namespace Temp
             while (start)
             {
                 Console.WriteLine("던전을 발견했습니다.\n" +
-                    "1. 들어간다, 2. 들어가지 않는다.");                    
+                    "1. 들어간다, 2. 들어가지 않는다.");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -41,6 +41,9 @@ namespace Temp
                         Console.WriteLine("원래의 장소로 돌아갑니다.");  
                         start = false;
                         break;
+                    default:
+                        Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
+                        break;
                 }
             }
         }
@@ -51,7 +54,7 @@ namespace Temp
             Random random = new Random();
             while (Game.start)
             {
-                int rd = random.Next(0, 10);
+                int rd = random.Next(0, 10); //필드 이동중 1/10확률로 던전에 들어가도록 설정
                 Console.WriteLine("이동중..");
                 Thread.Sleep(1000);                
                 if (rd == 0)
@@ -66,25 +69,32 @@ namespace Temp
                     while (start)
                     {
                         Console.WriteLine("전투가 끝났습니다. 다음 마을이 보입니다 이동하시겠습니까?");
-                        Console.WriteLine("1.스테이터스 확인, 2.그린힐 마을로 이동\n" +
-                            "3.브라이튼 마을로 이동, 4.다른 몬스터와 전투, 5.게임 종료");
+                        Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
+                            "4.다른 몬스터와 전투, 5.그린힐 마을로 이동, 6.브라이튼 마을로 이동, 7.게임 종료");
                         switch (Console.ReadLine())
                         {
                             case "1":
                                 player.PlayerStats();
                                 break;
                             case "2":
-                                ((Village)Game.map.Locations[1]).MapNamespace();
-                                ((Village)Game.map.Locations[1]).StartingVillage(player, start);
+                                player.PrintInven();
+                                player.playerinventory.SetingItem(player);
                                 break;
                             case "3":
-                                ((Village)Game.map.Locations[4]).MapNamespace();
-                                ((Village)Game.map.Locations[4]).SecondVillage(player, start);
+                                player.EquimentGetItem(player, start);                                
                                 break;
                             case "4":
                                 FirstField(player, start);
                                 break;
                             case "5":
+                                ((Village)Game.map.Locations[1]).MapNamespace();
+                                ((Village)Game.map.Locations[1]).StartingVillage(player, start);
+                                break;
+                            case "6":
+                                ((Village)Game.map.Locations[4]).MapNamespace();
+                                ((Village)Game.map.Locations[4]).SecondVillage(player, start);
+                                break;
+                            case "7":
                                 Game.GameStop();
                                 break;
                             default:
@@ -99,29 +109,35 @@ namespace Temp
         {
             MapType = 2;
             Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
-            BattleManager.Fight(player, enemyRnadomGet,start, MapType);
+            BattleManager.Fight(player, enemyRnadomGet, start , MapType);
             while (Game.start)
             {
                 Console.WriteLine("전투가 끝났습니다. 다음 마을이 보입니다 이동하시겠습니까?");
-                Console.WriteLine("1.스테이터스 확인, 2.브라이튼 마을로 이동\n" +
-                    "3.벨 플로라 마을로 이동, 4.다른 몬스터와 전투, 5.게임 종료");
-                switch (Console.ReadLine())
+                Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
+                    "4.다른 몬스터와 전투, 5.브라이튼 마을로 이동, 6.벨 플로라 마을로 이동, 7.게임 종료");
+                 switch (Console.ReadLine())
                 {
                     case "1":
                         player.PlayerStats();
                         break;
                     case "2":
+                        player.PrintInven();
+                        player.playerinventory.SetingItem(player);
+                        break;
+                    case "3":
+                        player.EquimentGetItem(player, start);
+                        break;
+                    case "4":
+                        break;
+                    case "5":
                         ((Village)Game.map.Locations[4]).MapNamespace();
                         ((Village)Game.map.Locations[4]).SecondVillage(player, start);
                         break;
-                    case "3":
+                    case "6":
                         ((Village)Game.map.Locations[7]).MapNamespace();
                         ((Village)Game.map.Locations[7]).ThirdVillage(player, start);
                         break;
-                    case "4":
-                        SecondField(player, start);
-                        break;
-                    case "5":
+                    case "7":
                         Game.GameStop();
                         break;
                     default:

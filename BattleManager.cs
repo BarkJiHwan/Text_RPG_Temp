@@ -11,9 +11,9 @@ namespace Temp
     {        
         static public bool FightSeting()
         {
-            bool isFighting;
             Console.WriteLine("1. 싸운다.");
             Console.WriteLine("2. 도망간다.");
+            bool isFighting;
             switch (Console.ReadLine())
             {
                 case "1":
@@ -35,7 +35,6 @@ namespace Temp
             var input = Console.ReadLine();
             while (start)
             {
-
                 if (input == "1")
                 {
                     start = false;
@@ -57,26 +56,33 @@ namespace Temp
                     Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
                 }
             }
-        }
-        
+        }        
 
         public static void Fight(Player player, Enemy enemy ,bool start ,int mapNum)
-        {
-            Random Random = new Random();
+        {//전투 매서드
             Console.WriteLine($"{enemy.Name} 발견 싸우시겠습니까? ");
-
+            Random Random = new Random();
             bool isFighting = BattleManager.FightSeting();
             
             while (isFighting)
             {
                 enemy.EnemyDisplayStats();
-                Console.WriteLine("1. 공격한다.");
-                Console.WriteLine("2. 인벤토리 확인.");
-                Console.WriteLine("3. 상태창 확인.");
-                Console.WriteLine("4. 도망간다.");
-                switch (Console.ReadLine())
-                {
+                Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
+               "4. 공격한다., 5. 도망간다., 6. 게임 종료");
+                
+                    switch (Console.ReadLine())
+                { 
                     case "1":
+                        player.PlayerStats();
+                        break;
+                    case "2":
+                        player.PrintInven();
+                        player.playerinventory.SetingItem(player);
+                        break;
+                    case "3":
+                        player.EquimentGetItem(player, start);
+                        break;
+                    case "4":                        
                         if (enemy.Health > 0)
                         {
                             player.Attack(enemy);
@@ -110,16 +116,7 @@ namespace Temp
                             isFighting = false;
                         }
                         break;
-
-                    case "2":
-                        player.PrintInven();
-                        break;
-
-                    case "3":
-                        player.PlayerStats();                        
-                        break;
-
-                    case "4":
+                    case "5":
                         int Avoid = Random.Next(3);
                         if (Avoid == 0)
                         {
@@ -131,13 +128,16 @@ namespace Temp
                         {
                             Console.WriteLine("성공적으로 도망쳤습니다.");
                             isFighting = false;
-                        }
+                        }                        
+                        break;
+                    case "6":
+                        Game.GameStop();
                         break;
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
                         break;
                 }
             }
-        }
+        }            
     }
 }

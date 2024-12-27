@@ -34,7 +34,7 @@ namespace Temp
 
                 Locations.Add(new Village("솔라템플","마을 중앙에 웅장한 신전이 빛을 밝히는 신성한 마을이다.",5));//13
                 Locations.Add(new Field("최후의 격전지", "끝없이 쏟아지는 몬스터들..",5));//14
-                Locations.Add(new Dungeon("소환의 진", "이곳에서 몬스터들이 계속 소환되고 있다..",5));//15
+                Locations.Add(new Dungeon("소환진", "이곳에서 몬스터들이 계속 소환되고 있다..",5));//15
             }            
         }
     }

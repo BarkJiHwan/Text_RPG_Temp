@@ -30,7 +30,7 @@ namespace Temp
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        player.PrintInven();                        
+                        player.PrintInven();
                         break;
                     case "2":
                         Game.map.Locations[1].MapNamespace();
@@ -45,13 +45,13 @@ namespace Temp
                 }
             }
         }
-        public void StartingVillage(Player player, bool start) // 그린힐 마을
+        public void StartingVillage(Player player, bool start) // 그린 힐 마을, 리팩터링 해서 마을 클래스로 만들고 이름 전부 변경해야 되는데....
         {            
             while (Game.start)
             {
                 Console.WriteLine("무엇을 하시겠습니까?");
                 Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
-                "4.촌장의 집으로 이동, 5.초원으로 이동, 6.게임 종료");
+                "4.촌장의 집으로 이동, 5.초원으로 이동, 6.게임 종료");                
                 switch (Console.ReadLine())
                 {
                     case "1":

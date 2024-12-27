@@ -20,9 +20,7 @@ namespace Temp
             }
         }
 
-
-
-        public void SetingItem(Player player)
+        public void SetingItem(Player player) //인벤토리 기능
         {
             Console.WriteLine("몇번째 아이템을 사용 하시겠습니까?\n" +
                 "첫번째 아이템은 0부터 시작합니다.");
@@ -92,7 +90,7 @@ namespace Temp
                         }
                         else
                         {
-                            Console.WriteLine("기타아이템은 사용할 수 없습니다.");
+                            Console.WriteLine("기타아이템은 사용할 수 없습니다."); //기타 아이템 추가 못함
                         }
                     }                   
                 else

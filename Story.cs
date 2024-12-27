@@ -23,25 +23,25 @@ namespace Temp
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : 이보게 정신이 드는가?");
             Console.ReadKey(true);
-            Console.WriteLine("??? : .... 당신은 누구시죠?");
+            Console.WriteLine("??? : ....누구시죠?");
             Console.ReadKey(true);
-            Console.WriteLine("마을촌장 : 나는 마을 촌장일세 괜찮다면 우리 마을로 가겠는가?");
+            Console.WriteLine("마을촌장 : 나는 마을촌장일세 괜찮다면 우리 마을로 가겠는가?");
             Console.ReadKey(true);
             Console.WriteLine("??? : ....");
         }
-        //public void WhatsYourName()
-        //{
-        //    Console.WriteLine("??? : 알겠습니다.");
-        //    Console.ReadKey(true);
-        //    Console.WriteLine("마을촌장 : 따라 오게나");
-        //    Console.ReadKey(true);
-        //    Console.WriteLine("??? : ...");
-        //    Console.ReadKey(true);
-        //    Console.WriteLine("촌장을 따라 마을에 도착할 때 쯤...");
-        //    Console.ReadKey(true);
-        //    Console.WriteLine("마을촌장 : 그러고보니 아직 자네 이름을 모르는군 자네의 이름이 뭔가?");
-        //    Console.WriteLine($"??? : ......!");            
-        //}
+        public void WhatsYourName()
+        {
+            Console.WriteLine("??? : 알겠습니다.");
+            Console.ReadKey(true);
+            Console.WriteLine("마을촌장 : 따라 오게나");
+            Console.ReadKey(true);
+            Console.WriteLine("??? : ...");
+            Console.ReadKey(true);
+            Console.WriteLine("촌장을 따라 마을에 도착할 때 쯤...");
+            Console.ReadKey(true);
+            Console.WriteLine("마을촌장 : 그러고보니 아직 자네 이름을 모르는군 자네의 이름이 뭔가?");
+            Console.WriteLine($"??? : ......!");
+        }
         public void FirstQuarter(Player player) 
         {
             Console.WriteLine($"{player.Name} : 제 이름은 {player.Name} 입니다.");            

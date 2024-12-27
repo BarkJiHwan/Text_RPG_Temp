@@ -18,6 +18,7 @@ namespace Temp
             {
                 //이름, 체력, 공격력, 방어력, 골드, 경험치
                 //0인덱스부터~40인덱스까지
+
                 _enemies.Add(new Enemy("고블린", 70, 15, 8, 10, 10));
                 _enemies.Add(new Enemy("임프", 85, 18, 9, 12, 12));
                 _enemies.Add(new Enemy("슬라임", 100, 20, 10, 14, 15));
@@ -71,32 +72,39 @@ namespace Temp
                 _enemies.Add(new Enemy("천상의 사이클롭스", 1350, 220, 110, 220, 145));
             }
         }
-        public Enemy EnemyRandomGet(int mapNum)
-        {
+        public Enemy EnemyRandomGet(int mapIndex) 
+        {//각 사냥터의 맵에 따라 나오는 몹이 달라지게 설정하고 싶었음            
+            //맵의 인덱스 값이 높아질 수록 즉, 사냥터의 수준이 올라 갈수록 더 강한 몹들이 나오도록 구현하고 싶었음.
+            //List를 활용하여 각 몹들이 갖는 수치를 직접 입력해 주면 되서 몹을 만들기가 매우 쉬움
+                        
             Random random = new Random();
             int num = 0;
-            if (mapNum == 1)
+            if (mapIndex == 1)
             {
                 num = random.Next(0, 4);
             }
-            else if (mapNum == 2)
+            else if (mapIndex == 2)
             {
                 num = random.Next(3, 7);
             }
-            else if (mapNum == 3)
+            else if (mapIndex == 3)
             {
                 num = random.Next(7, 10);
             }
-            else if (mapNum == 4)
+            else if (mapIndex == 4)
             {
-                num = random.Next(7, 10);
+                num = random.Next(10, 16);
             }
-            else if (mapNum == 5)
+            else if (mapIndex == 5)
             {
-                num = random.Next(7, 10);
-            }            
-
-            Enemy CopyEnemy = _enemies[num];
+                num = random.Next(15, 20);
+            }
+            //맵의 인덱스를 받아와 그 값에 맞는 몹을 List에서 랜덤으로 한마리 뽑음
+            //그 후에 랜덤으로 뽑은 값을 변수 num에 담고 List의 인덱스로 넣어 줌
+            //값을 그냥 리턴하게 되면 원본의 수치가 바뀌게 되니
+            //그 값을 복사할 수 있는 변수를 만듬
+            //그리고 복사한 변수의 수치를 리턴하여 원본값이 바뀌지 않도록 했음.
+            Enemy CopyEnemy = _enemies[num]; 
             return new Enemy(CopyEnemy.Name, CopyEnemy.Health, CopyEnemy.Damage, CopyEnemy.Armor, CopyEnemy.Gold,CopyEnemy.Exp);
         }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Temp
 {
     internal class OtherItem : Item
-    {
+    {//기타아이템 추가 못함
         public OtherItem(string name, string description, int price)
             : base(ItemTpye.OtherItem, name, description, price)
         {
