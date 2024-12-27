@@ -26,12 +26,12 @@ namespace Temp
             bool stop = true;
             while (stop)
             {
-                Console.WriteLine("1. 상자를 연다, 2. 무시한다.");
+                Console.WriteLine("1. 상자를 연다, 2. 무시한다., 3.던전 탈출하기");
                 var userInput = Console.ReadLine();
                 if (userInput == "1")
                 {
                     Random random = new Random();
-                    int rd = random.Next(5);
+                    int rd = random.Next(3);
                     if (rd == 0)
                     {
                         Console.WriteLine($"{player.Name} : 뭐야? 아무것도 없잖아");
@@ -52,17 +52,24 @@ namespace Temp
                         Console.WriteLine("함정이 발동합니다");
                         Console.WriteLine("몬스터가 소환됩니다.");
                         Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
-                        BattleManager.Fight(player, enemyRnadomGet, stop);
+                        BattleManager.Fight(player, enemyRnadomGet, stop, MapType);
                         stop = false;
                     }
                 }
                 else if (userInput == "2")
                 {
                     Console.WriteLine($"{player.Name} : 저 보물상자는 수상해 보인다.");
-                    Console.WriteLine($"스페이스바{Console.ReadKey(true)}");
-                    ;
+                    Console.ReadKey(true);                    
                     stop = false;
                 }
+
+                else if (userInput == "3")
+                {                    
+                    Console.WriteLine("던전을 나옵니다.");
+                    ((Field)Game.map.Locations[2]).FirstField(player, stop);
+                    stop = false;
+                }
+
                 else
                 {
                     Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
@@ -77,30 +84,32 @@ namespace Temp
             {
                 while (start)
                 {
-                    Console.WriteLine("퀘스트 내용");// 추가해야 됨, 던전마다 퀘스트 변경 됨
+                    Console.WriteLine("퀘스트 내용");// 추가해야 됨, 던전마다 퀘스트 변경
                     Console.WriteLine("퀘스트 진행상황 ?/?");
                     Console.WriteLine("던전 탐험중..");
                     Thread.Sleep(1000);
 
-                    int rd = random.Next(0, 4);
-                    if (rd == 0) //보물상자 발견 메서드
+                    int rd = random.Next(1);
+                    if (rd == 0) //보물상자 발견
                     {
                         TreasureChest(player, mapType);
                     }
                     else
                     {
                         Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
-                        BattleManager.Fight(player, enemyRnadomGet, start);
+                        BattleManager.Fight(player, enemyRnadomGet, start, MapType);
                         Console.WriteLine("전투가 끝났습니다. 무엇을 하시겠습니까?");
                         Console.WriteLine("1.스테이터스 확인, 2.이동하기, ,3.던전 탈출하기  4.게임 종료");
                         switch (Console.ReadLine())
                         {
                             case "1":
                                 player.PlayerStats();
+                                player.playerinventory.SetingItem(player);
                                 break;
                             case "2":
                                 break;
                             case "3":
+                                Console.WriteLine("던전을 나옵니다.");
                                 ((Field)Game.map.Locations[2]).FirstField(player, start);
                                 break;
                             case "4":

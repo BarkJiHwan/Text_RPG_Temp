@@ -50,6 +50,7 @@
     <Compile Include="ConsumableItem.cs" />
     <Compile Include="Dungeon.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="Equipment.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Inventory.cs" />

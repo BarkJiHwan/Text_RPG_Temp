@@ -43,7 +43,5 @@ namespace Temp
             Console.WriteLine($"적 이름: {Name} \n" +
                 $"체력: {Health}, 공격력: {Damage}, 방어력: {Armor}, 경험치 {Exp}");
         }
-    
-
     }
 }

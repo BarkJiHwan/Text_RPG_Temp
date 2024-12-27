@@ -12,8 +12,7 @@ namespace Temp
     }    
     public abstract class Item 
     {
-        private ItemTpye weapon;
-
+                
         public ItemTpye Tpye { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -33,13 +32,16 @@ namespace Temp
             Description = description;            
             Price = price;
         }
+        public Item()
+        {
+        }
 
 
         public virtual void ItemStats()
         {
             Console.WriteLine($"이름: {Name}, 타입: {Tpye}, 설명: \n{Description}\n 가격: {Price}");
         }
-        public abstract void equip(Character player);
-        public abstract void Unequip(Character player);
+        public abstract void equip(Player player);
+        public abstract void Unequip(Player player);
     }
 }

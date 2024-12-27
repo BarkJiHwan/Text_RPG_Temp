@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace Temp
 {
-    public class Inventory
+    public class Equipment
     {
-        public List<Item> inventories { get; set; }
+        public Dictionary<ItemTpye, Item> Equip { get; set; }
         public Item item;
-        public Inventory()
+        public Equipment()
         {
-            inventories = new List<Item>();
+            Equip = new Dictionary<ItemTpye, Item>();
             {
-
+                Equip[ItemTpye.Weapon] = null;
+                Equip[ItemTpye.Armor] = null;
+                Equip[ItemTpye.Accessory] = null;
             }
         }
 
-        public void SetingItem(Player player)
+        public void ReplaceItem(Player player, Inventory inventory)
         {
             Console.WriteLine("몇번째 아이템을 사용 하시겠습니까?\n" +
                 "첫번째 아이템은 0부터 시작합니다.");
@@ -32,11 +32,11 @@ namespace Temp
             }
             else
             {
-                if (inventories != null)
+                if (Equip != null)
                 {
-                    if (InventoyrNumber >= 0 && InventoyrNumber < inventories.Count)
+                    if (inventory.item.Tpye == ItemTpye.Weapon)
                     {
-                        Item item = inventories[InventoyrNumber];
+                        Item item = player.playerinventory.inventories[InventoyrNumber];
                         if (item.Tpye == ItemTpye.Weapon)
                         {
                             item.equip(player);
@@ -52,14 +52,9 @@ namespace Temp
                             item.equip(player);
                             inventories.RemoveAt(InventoyrNumber);
                         }
-                        else if (item.Tpye == ItemTpye.Consumable)
-                        {
-                            item.equip(player);
-                            inventories.RemoveAt(InventoyrNumber);
-                        }
                         else
                         {
-                            Console.WriteLine("기타아이템은 사용할 수 없습니다.");
+                            Console.WriteLine("착용할 수 없는 아이템 입니다.");
                         }
                     }
                     else

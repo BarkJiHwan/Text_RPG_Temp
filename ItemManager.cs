@@ -16,7 +16,12 @@ namespace Temp
         public List<Item> _AccessoryItems { get; set; }
         public List<Item> _ConsumableItems { get; set; }
         public List<Item> _OtherItems { get; set; }
-        public ItemTpye _ItemTpye { get; set; } = new ItemTpye();
+        public ItemTpye _ItemTpye { get; set; }
+        public WeaponItem WeaponItem;
+        public ArmorItem ArmorItem;
+        public AccessoryItem AccessoryItem;
+        public ConsumableItem ConsumableItem;
+        public OtherItem OtherItem;
 
         public ItemManager()
         {

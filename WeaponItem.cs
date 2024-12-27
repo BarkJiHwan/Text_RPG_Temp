@@ -16,7 +16,7 @@ namespace Temp
             CriticalDam = criticalDam;
         }
 
-        public override void equip(Character player)
+        public override void equip(Player player)
         {
             Console.WriteLine($"{Name}장착");
             player.Damage += Damage;
@@ -25,7 +25,7 @@ namespace Temp
             Console.WriteLine($"공격력 +{Damage}, 크리티컬 확률 +{Critical}, 크리티컬데미지 +{CriticalDam}");
         }
 
-        public override void Unequip(Character player)
+        public override void Unequip(Player player)
         {
             Console.WriteLine($"{Name}해제");
             player.Damage -= Damage;

@@ -28,20 +28,39 @@ namespace Temp
             }
         }
 
-        static public void HeroesNeverDying(Player player)
+        static public void HeroesNeverDying(Player player, bool start)
         {
-            Console.WriteLine("1. 부활");
-            switch (Console.ReadLine())
+            Console.WriteLine("1. 부활하기");
+            start = true;
+            var input = Console.ReadLine();
+            while (start)
             {
-                case "1":
-                    Console.WriteLine("부활합니다. ");
 
-                    break;                
-                
+                if (input == "1")
+                {
+                    start = false;
+                    Console.WriteLine("부활합니다. ");
+                    Console.WriteLine("3초 후 태초의 장소에서 부활합니다.");
+                    Console.WriteLine("3...");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("2...");
+                    Console.WriteLine("소지금의 절반을 몬스터가 훔쳐갑니다.");
+                    player.Gold = player.Gold / 2;
+                    Thread.Sleep(1000);
+                    player.HealthZero(player);
+                    Console.WriteLine("1... \t");
+                    Thread.Sleep(1000);
+                    ((Village)Game.map.Locations[0]).BeginningVillage(player, start);
+                }
+                else
+                {
+                    Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
+                }
             }
         }
+        
 
-        public static void Fight(Player player, Enemy enemy ,bool start)
+        public static void Fight(Player player, Enemy enemy ,bool start ,int mapNum)
         {
             Random Random = new Random();
             Console.WriteLine($"{enemy.Name} 발견 싸우시겠습니까? ");
@@ -67,17 +86,8 @@ namespace Temp
                                 if (player.Health < 0)
                                 {
                                     Console.WriteLine("당신은 죽었습니다");
-                                    Console.WriteLine("3초 후 태초의 장소에서 부활합니다.");
-                                    Console.WriteLine("3...");
-                                    Thread.Sleep(1000);
-                                    Console.WriteLine("2...");
-                                    Console.WriteLine("소지금의 절반을 몬스터가 훔쳐갑니다.");
-                                    player.Gold = player.Gold / 2;
-                                    Thread.Sleep(1000);
-                                    player.HealthZero(player);
-                                    Console.WriteLine("1... \t");
-                                    Thread.Sleep(1000);
-                                    ((Village)Game.map.Locations[0]).BeginningVillage(player,start);
+                                    HeroesNeverDying(player, start);
+                                    isFighting = false;
                                 }
                             }
                             else
@@ -86,6 +96,7 @@ namespace Temp
                                 player.Exp += enemy.Exp;
                                 player.Gold += enemy.Gold;
                                 Console.WriteLine($"경험치 :{enemy.Exp}획득, 골드: {enemy.Gold}획득,");
+                                Game.itemManager.ItemRooting(player,mapNum);
                                 isFighting = false;
                             }
                         }
@@ -95,6 +106,7 @@ namespace Temp
                             player.Exp += enemy.Exp;
                             player.Gold += enemy.Gold;
                             Console.WriteLine($"경험치 :{enemy.Exp}획득, 골드: {enemy.Gold}획득,");
+                            Game.itemManager.ItemRooting(player, mapNum);
                             isFighting = false;
                         }
                         break;

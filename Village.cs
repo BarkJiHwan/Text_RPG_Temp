@@ -30,7 +30,7 @@ namespace Temp
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        player.PlayerStats();
+                        player.PrintInven();                        
                         break;
                     case "2":
                         Game.map.Locations[1].MapNamespace();
@@ -55,10 +55,11 @@ namespace Temp
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        player.PlayerStats();
+                        player.PlayerStats();                        
                         break;
                     case "2":
                         player.PrintInven();
+                        player.playerinventory.SetingItem(player);
                         break;
                     case "3":
                         Console.WriteLine("촌장님"); //NPC + 퀘스트 관련 내용 추가 해야 됨                        

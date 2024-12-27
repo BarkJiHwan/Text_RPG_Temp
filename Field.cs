@@ -62,7 +62,7 @@ namespace Temp
                 else
                 {
                     Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
-                    BattleManager.Fight(player, enemyRnadomGet, start);
+                    BattleManager.Fight(player, enemyRnadomGet, start, MapType);
                     while (start)
                     {
                         Console.WriteLine("전투가 끝났습니다. 다음 마을이 보입니다 이동하시겠습니까?");
@@ -96,9 +96,10 @@ namespace Temp
             }
         }
         public void SecondField(Player player, bool start) //두번째 필드 (사냥터)
-        {            
+        {
+            MapType = 2;
             Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
-            BattleManager.Fight(player, enemyRnadomGet,start);
+            BattleManager.Fight(player, enemyRnadomGet,start, MapType);
             while (Game.start)
             {
                 Console.WriteLine("전투가 끝났습니다. 다음 마을이 보입니다 이동하시겠습니까?");

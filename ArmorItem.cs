@@ -16,7 +16,7 @@ namespace Temp
             MaxMana = maxMana;
         }
 
-        public override void equip(Character player)
+        public override void equip(Player player)
         {
             Console.WriteLine($"{Name}장착");
             player.Armor += Armor;
@@ -24,7 +24,7 @@ namespace Temp
             player.MaxMana += MaxMana;
             Console.WriteLine($"방어력 +{Armor}, 체력 +{MaxHealth}, 마나 +{MaxMana}");
         }
-        public override void Unequip(Character player)
+        public override void Unequip(Player player)
         {
             Console.WriteLine($"{Name}해제");
             player.Armor -= Armor;

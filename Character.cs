@@ -25,7 +25,7 @@ namespace Temp
         public int Exp { get; set; }
         public int MaxExp { get; set; }
         public bool IsPlayerState { get; set; }
-        static int EnemyCount = 0;
+        //static int EnemyCount = 0;
         protected Character(string name, int health, int damage, int armor)
         {
             Name = name;

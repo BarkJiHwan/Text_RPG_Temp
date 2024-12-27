@@ -8,20 +8,21 @@ using System.Threading.Tasks;
 
 namespace Temp
 {
-    internal class Player : Character
+    public class Player : Character
     {
         public bool Mainstory;
         public Inventory playerinventory {  get; set; }
+        public Equipment Equipment { get; set; }
         public Player(string name) : base(name, 100, 10, 5)
         {
             Name = name;
             Level = 1;
-            Health = 300;
+            MaxHealth = 300;
+            MaxMana = 100;
+            Health = MaxHealth;
+            Mana = MaxMana;
             Damage = 50;
             Armor = 5;
-            Mana =50 ;
-            MaxHealth = Health;
-            MaxMana = Mana;
             Critical = 5;
             CriticalDam = (Damage * 1.5);
             Gold = 0;
@@ -31,6 +32,7 @@ namespace Temp
             MaxExp = 0;
 
             playerinventory = new Inventory();
+            Equipment = new Equipment();
             
         }
 
@@ -54,10 +56,7 @@ namespace Temp
                 $"크리티컬확률: {Critical} \n" +
                 $"크리티컬데미지: {CriticalDam} \n" +
                 $"골드: {Gold}\n" +
-                $"경험치: {Exp}\n" +
-                $"무기: \n" +
-                $"갑옷: \n" +
-                $"악세서리1: \n");
+                $"경험치: {Exp}\n");
         }
 
         public void LevelUP()
@@ -80,9 +79,10 @@ namespace Temp
         }
         public void PrintInven()
         {
+            int Number=0;
             foreach (var item in playerinventory.inventories)
             {
-                Console.WriteLine(item.Name);
+                Console.WriteLine($"{Number++}번 아이템 : {item.Name}");
             }
         }
     }

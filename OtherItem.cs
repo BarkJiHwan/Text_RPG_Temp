@@ -12,12 +12,12 @@ namespace Temp
             : base(ItemTpye.OtherItem, name, description, price)
         {
         }
-        public override void equip(Character player)
+        public override void equip(Player player)
         {
             Console.WriteLine("장착할 수 없는 아이템 입니다.");
         }
 
-        public override void Unequip(Character player)
+        public override void Unequip(Player player)
         {
 
         }
