@@ -44,7 +44,7 @@ namespace Temp
         //}
         public void FirstQuarter(Player player) 
         {
-            Console.WriteLine($"{player.Name} : 제 이름은 {player.Name} 입니다.");
+            Console.WriteLine($"{player.Name} : 제 이름은 {player.Name} 입니다.");            
             Console.ReadKey(true);
             Console.WriteLine($"마을촌장 : {player.Name}..?  \'처음듣는 이름이지만 낯설지 않은 기분이군...\' ");
             Console.ReadKey(true);

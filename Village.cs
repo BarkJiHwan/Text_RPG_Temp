@@ -50,21 +50,21 @@ namespace Temp
             while (Game.start)
             {
                 Console.WriteLine("무엇을 하시겠습니까?");
-                Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
-                "4.분수대로 이동, 5.초원으로 이동, 6.게임 종료");
+                Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.촌장의 집으로 이동\n" +
+                "4.상점으로 이동, 5.초원으로 이동, 6.게임 종료");
                 switch (Console.ReadLine())
                 {
                     case "1":
                         player.PlayerStats();
                         break;
                     case "2":
-                        Console.WriteLine("촌장님"); //NPC + 퀘스트 관련 내용 추가 해야 됨                        
+                        player.PrintInven();
                         break;
                     case "3":
-                        Console.WriteLine("상점"); //상점추가해야됨                        
+                        Console.WriteLine("촌장님"); //NPC + 퀘스트 관련 내용 추가 해야 됨                        
                         break;
                     case "4":
-                        Console.WriteLine("분수대"); //분수대 추가해야 됨                        
+                        Console.WriteLine("상점"); //분수대 추가해야 됨                        
                         break;
                     case "5":
                         ((Field)Game.map.Locations[2]).MapNamespace();

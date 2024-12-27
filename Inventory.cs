@@ -8,12 +8,15 @@ namespace Temp
 {
     internal class Inventory
     {
-        List<Item> inventories {  get; set; }
+        public List<Item> inventories {  get; set; }
         public Inventory()
         {
             inventories = new List<Item>();
-            { 
+            {
+
             }
         }
+        
+        
     }
 }

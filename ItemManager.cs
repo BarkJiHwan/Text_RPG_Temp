@@ -167,9 +167,9 @@ namespace Temp
         //        Item CopyItem = _OtherItems[CopyNum];
         //        return new OtherItem(CopyItem.Name, CopyItem.Description, CopyItem.Price);
         //    }
-        
 
-            public void ItemRooting(Player player, int mapNum)
+
+        public void ItemRooting(Player player, int mapNum)
         {
             //인자값으로 맵 번호를 받아서 해당 맵 번호와 일치하는 아이템을 표시해줌
             //랜덤으로 무기,방어구,악세서리, 소비아이템 중 한개 나옴
@@ -206,25 +206,24 @@ namespace Temp
             if (itemType == 0)
             {
                 Console.WriteLine(Game.itemManager._WeaponItems[itemNumber].Name);
-                itemCopy = Game.itemManager._WeaponItems[itemNumber];
+                itemCopy = new WeaponItem(_WeaponItems[itemNumber].Name, _WeaponItems[itemNumber].Damage, _WeaponItems[itemNumber].Critical, _WeaponItems[itemNumber].CriticalDam, _WeaponItems[itemNumber].Description, _WeaponItems[itemNumber].Price);
             }
             else if (itemType == 1)
             {
                 Console.WriteLine(Game.itemManager._ArmorItmes[itemNumber].Name);
-                itemCopy = Game.itemManager._ArmorItmes[itemNumber];
+                itemCopy = new ArmorItem(_ArmorItmes[itemNumber].Name, _ArmorItmes[itemNumber].Armor, _ArmorItmes[itemNumber].MaxHealth, _ArmorItmes[itemNumber].MaxMana, _ArmorItmes[itemNumber].Description, _ArmorItmes[itemNumber].Price);
             }
             else if (itemType == 2)
             {
                 Console.WriteLine(Game.itemManager._AccessoryItems[itemNumber].Name);
-                itemCopy = Game.itemManager._AccessoryItems[itemNumber];
+                itemCopy = new AccessoryItem(_AccessoryItems[itemNumber].Name, _AccessoryItems[itemNumber].Damage, _AccessoryItems[itemNumber].Armor, _AccessoryItems[itemNumber].Health, _AccessoryItems[itemNumber].Mana, _AccessoryItems[itemNumber].Description, _AccessoryItems[itemNumber].Price);
             }
             else
             {
                 Console.WriteLine(Game.itemManager._ConsumableItems[itemNumber].Name);
-                itemCopy = Game.itemManager._ConsumableItems[itemNumber];
+                itemCopy = new ConsumableItem(_ConsumableItems[itemNumber].Name, _ConsumableItems[itemNumber].Description, _ConsumableItems[itemNumber].Health, _ConsumableItems[itemNumber].Mana, _ConsumableItems[itemNumber].Price);
             }
-
-            Console.WriteLine($"{itemCopy.Name}아이템을 획득하시겠습니까?" +
+            Console.WriteLine($"{itemCopy.Name}아이템을 획득하시겠습니까?\n" +
                 "1번, 획득한다, 2번, 버린다.");
             bool itemRooting = true;
             var inPut = Console.ReadLine();
@@ -232,8 +231,8 @@ namespace Temp
             {
                 if (inPut == "1")
                 {
-                    player.ItemGet(itemCopy);
                     Console.WriteLine("아이템을 획득했습니다.");
+                    player.ItemGet(itemCopy);
                     itemRooting = false;
                 }
                 else if (inPut == "2")

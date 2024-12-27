@@ -11,7 +11,7 @@ namespace Temp
     internal class Player : Character
     {
         public bool Mainstory;
-        public List<Inventory> playerinventory {  get; set; }
+        public Inventory playerinventory {  get; set; }
         public Player(string name) : base(name, 100, 10, 5)
         {
             Name = name;
@@ -28,9 +28,9 @@ namespace Temp
             
             MaxGold = 999_999_999;
             Exp = 0;
-            MaxExp = 0;        
+            MaxExp = 0;
 
-            playerinventory = new List<Inventory>();
+            playerinventory = new Inventory();
             
         }
 
@@ -55,7 +55,7 @@ namespace Temp
                 $"크리티컬데미지: {CriticalDam} \n" +
                 $"골드: {Gold}\n" +
                 $"경험치: {Exp}\n" +
-                $"무기:  \n" +
+                $"무기: \n" +
                 $"갑옷: \n" +
                 $"악세서리1: \n");
         }
@@ -76,7 +76,14 @@ namespace Temp
 
         public void ItemGet(Item item)
         {            
-            playerinventory.Add( item);
+            playerinventory.inventories.Add(item);
+        }
+        public void PrintInven()
+        {
+            foreach (var item in playerinventory.inventories)
+            {
+                Console.WriteLine(item.Name);
+            }
         }
     }
 }

@@ -24,18 +24,17 @@ namespace Temp
         {
             while (start)
             {
-                Console.WriteLine("던전을 발견했습니다.");
-                Console.WriteLine("던전에 들어가면 특정 조건이 성립하지 않으면 나올 수 없습니다.\n" +
+                Console.WriteLine("던전을 발견했습니다.\n" +
                     "1. 들어간다, 2. 들어가지 않는다.");                    
                 switch (Console.ReadLine())
                 {
                     case "1":
                         if(mapType == 1)
                         {
-                            MapType = mapType;
                             //Quest = mapType; 퀘스트 테이블 추가 예정
                             ((Dungeon)Game.map.Locations[3]).MapNamespace();
                             ((Dungeon)Game.map.Locations[3]).FirstDungeon(player, start, mapType);
+                            start = false;
                         }
                         break;
                     case "2":
@@ -52,12 +51,13 @@ namespace Temp
             Random random = new Random();
             while (Game.start)
             {
-                int rd = random.Next(0, 10);
+                int rd = random.Next(0, 5);
                 Console.WriteLine("이동중..");
                 Thread.Sleep(1000);                
                 if (rd == 0)
                 {
                     DiscoverDungeon(player, start, MapType);
+                    FirstField(player, start);
                 }
                 else
                 {

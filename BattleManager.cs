@@ -100,7 +100,7 @@ namespace Temp
                         break;
 
                     case "2":
-                        Console.WriteLine("인벤토리 메소드 호출");
+                        player.PrintInven();
                         break;
 
                     case "3":

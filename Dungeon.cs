@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +26,12 @@ namespace Temp
             bool stop = true;
             while (stop)
             {
-                Console.WriteLine("1. 상자를 연다, 2. 상자를 버린다.");
+                Console.WriteLine("1. 상자를 연다, 2. 무시한다.");
                 var userInput = Console.ReadLine();
                 if (userInput == "1")
                 {
                     Random random = new Random();
-                    int rd = random.Next(3);
+                    int rd = random.Next(5);
                     if (rd == 0)
                     {
                         Console.WriteLine($"{player.Name} : 뭐야? 아무것도 없잖아");
@@ -43,18 +44,28 @@ namespace Temp
                     else if (rd == 1)
                     {
                         Console.WriteLine($"아이템을 발견했습니다!");
-
-
+                        Game.itemManager.ItemRooting(player, mapType);
+                        stop = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("함정이 발동합니다");
+                        Console.WriteLine("몬스터가 소환됩니다.");
+                        Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
+                        BattleManager.Fight(player, enemyRnadomGet, stop);
+                        stop = false;
                     }
                 }
                 else if (userInput == "2")
                 {
-
-
+                    Console.WriteLine($"{player.Name} : 저 보물상자는 수상해 보인다.");
+                    Console.WriteLine($"스페이스바{Console.ReadKey(true)}");
+                    ;
+                    stop = false;
                 }
                 else
                 {
-
+                    Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
                 }
             }
         }
@@ -66,37 +77,33 @@ namespace Temp
             {
                 while (start)
                 {
-                    Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
-                    BattleManager.Fight(player, enemyRnadomGet, start);
-                    int rd = random.Next(0, 1);
                     Console.WriteLine("퀘스트 내용");// 추가해야 됨, 던전마다 퀘스트 변경 됨
                     Console.WriteLine("퀘스트 진행상황 ?/?");
                     Console.WriteLine("던전 탐험중..");
                     Thread.Sleep(1000);
-                    if (rd == 0)
+
+                    int rd = random.Next(0, 4);
+                    if (rd == 0) //보물상자 발견 메서드
                     {
-                        Console.WriteLine("보물상자를 발견했습니다~");
-                        //보물상자 로직추가
-                        //보물상자를 열겠습니까?
-                        //연다. 꽝,아이템,몬스터
-                        //꽝일 경우 다시 던전 탐험
-                        //아이템 일경우 1타입 던전이라면 각 아이템별 0~4아이템 중 랜덤으로 한개를 인벤토리로 넣어준다
-                        //몬스터라면? 해당 던전의 몬스터 등장~
-                        //안연다, 다시 던전 탐험 진행
+                        TreasureChest(player, mapType);
                     }
                     else
                     {
+                        Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
+                        BattleManager.Fight(player, enemyRnadomGet, start);
                         Console.WriteLine("전투가 끝났습니다. 무엇을 하시겠습니까?");
-                        Console.WriteLine("1.스테이터스 확인, 2.다른 몬스터와 전투, 3.게임 종료");
+                        Console.WriteLine("1.스테이터스 확인, 2.이동하기, ,3.던전 탈출하기  4.게임 종료");
                         switch (Console.ReadLine())
                         {
                             case "1":
                                 player.PlayerStats();
                                 break;
                             case "2":
-                                Console.WriteLine("다음몬스터 탐색");
                                 break;
                             case "3":
+                                ((Field)Game.map.Locations[2]).FirstField(player, start);
+                                break;
+                            case "4":
                                 start = false;
                                 Game.GameStop();
                                 break;
