@@ -10,7 +10,7 @@ namespace Temp
 
     internal class ItemManager
     {
-        public Item item {  get; set; }
+        public List<List<Item>> AllItemList { get; set; }
         public List<Item> _WeaponItems { get; set; }
         public List<Item> _ArmorItmes { get; set; }
         public List<Item> _AccessoryItems { get; set; }
@@ -19,7 +19,7 @@ namespace Temp
         public ItemTpye _ItemTpye { get; set; } = new ItemTpye();
 
         public ItemManager()
-        {            
+        {
             _WeaponItems = new List<Item>();
             {
                 _WeaponItems.Add(new WeaponItem("긴 나무 몽둥이", 10, 2, 1.2, "단단한 나무로 만든 긴 몽둥이. 기본적인 무기로 사용된다", 500));
@@ -100,68 +100,152 @@ namespace Temp
                 _ConsumableItems.Add(new ConsumableItem("극상의 체력 회복 포션", "체력을 3000 회복합니다.", 3000, 0, 5000));
                 _ConsumableItems.Add(new ConsumableItem("극상의 마력 회복 포션", "마력을 1500 회복합니다.", 0, 1500, 5000));
             }
+
+            AllItemList = new List<List<Item>>();
+            {
+                AllItemList.Add(_WeaponItems);
+                AllItemList.Add(_ArmorItmes);
+                AllItemList.Add(_AccessoryItems);
+                AllItemList.Add(_ConsumableItems);
+            }
         }
 
-        public Item ItemRandomGet(int mapNum)
+        //public Item ItemRandomGet(int mapNum)
+        //{
+        //    Random random = new Random();
+        //    var itemTpye = (int)_ItemTpye;
+        //    int num = 0;
+        //    if (mapNum == 1)
+        //    {
+        //        num = random.Next(0, 4);
+        //        itemTpye = random.Next(0, 5);
+        //    }
+        //    else if (mapNum == 2)
+        //    {
+        //        num = random.Next(3, 7);
+        //        itemTpye = random.Next(0, 5);
+        //    }
+        //    else if (mapNum == 3)
+        //    {
+        //        num = random.Next(7, 10);
+        //        itemTpye = random.Next(0, 5);
+        //    }
+        //    else if (mapNum == 4)
+        //    {
+        //        num = random.Next(7, 10);
+        //        itemTpye = random.Next(0, 5);
+        //    }
+        //    else if (mapNum == 5)
+        //    {
+        //        num = random.Next(7, 10);
+        //        itemTpye = random.Next(0, 5);
+        //    }
+        //    int CopyNum = num;
+
+        //    if (itemTpye == 0)
+        //    {
+        //        Item CopyItem = _WeaponItems[CopyNum];
+        //        return new WeaponItem(CopyItem.Name, CopyItem.Damage, CopyItem.Critical, CopyItem.CriticalDam, CopyItem.Description, CopyItem.Price);
+        //    }
+        //    else if (itemTpye == 1)
+        //    {
+        //        Item CopyItem = _ArmorItmes[CopyNum];
+        //        return new ArmorItem(CopyItem.Name, CopyItem.Armor, CopyItem.Health, CopyItem.Mana, CopyItem.Description, CopyItem.Price);
+        //    }
+        //    else if (itemTpye == 2)
+        //    {
+        //        Item CopyItem = _AccessoryItems[CopyNum];
+        //        return new AccessoryItem(CopyItem.Name, CopyItem.Damage, CopyItem.Armor, CopyItem.Health, CopyItem.Mana, CopyItem.Description, CopyItem.Price);
+        //    }
+        //    else if (itemTpye == 3)
+        //    {
+        //        Item CopyItem = _ConsumableItems[CopyNum];
+        //        return new ConsumableItem(CopyItem.Name, CopyItem.Description, CopyItem.Health, CopyItem.Mana, CopyItem.Price);
+        //    }
+        //    else
+        //    {
+        //        Item CopyItem = _OtherItems[CopyNum];
+        //        return new OtherItem(CopyItem.Name, CopyItem.Description, CopyItem.Price);
+        //    }
+        
+
+            public void ItemRooting(Player player, int mapNum)
         {
+            //인자값으로 맵 번호를 받아서 해당 맵 번호와 일치하는 아이템을 표시해줌
+            //랜덤으로 무기,방어구,악세서리, 소비아이템 중 한개 나옴
             Random random = new Random();
-            var itemTpye = (int)_ItemTpye;
-            int num = 0;            
+            int itemType = random.Next(4);
+            int itemNumber = random.Next(4);
             if (mapNum == 1)
             {
-                num = random.Next(0, 4);
-                itemTpye = random.Next(0, 5);
+                itemNumber = random.Next(0, 3);
+                itemType = random.Next(0, 4);
             }
             else if (mapNum == 2)
             {
-                num = random.Next(3, 7);
-                itemTpye = random.Next(0, 5);
+                itemNumber = random.Next(3, 7);
+                itemType = random.Next(0, 4);
             }
             else if (mapNum == 3)
             {
-                num = random.Next(7, 10);
-                itemTpye = random.Next(0, 5);
+                itemNumber = random.Next(7, 10);
+                itemType = random.Next(0, 4);
             }
             else if (mapNum == 4)
             {
-                num = random.Next(7, 10);
-                itemTpye = random.Next(0, 5);
-            }
-            else if (mapNum == 5)
-            {
-                num = random.Next(7, 10);
-                itemTpye = random.Next(0, 5);
-            }
-            int CopyNum = num;
-
-            if(itemTpye == 0)
-            {
-                Item CopyItem = _WeaponItems[CopyNum];
-                return new WeaponItem(CopyItem.Name, CopyItem.Damage, CopyItem.Critical, CopyItem.CriticalDam, CopyItem.Description ,CopyItem.Price);
-            }
-            else if (itemTpye == 1)
-            {
-                Item CopyItem = _ArmorItmes [CopyNum];
-                return new ArmorItem(CopyItem.Name, CopyItem.Armor, CopyItem.Health, CopyItem.Mana, CopyItem.Description, CopyItem.Price);
-            }
-            else if (itemTpye == 2)
-            {
-                Item CopyItem = _AccessoryItems[CopyNum];
-                return new AccessoryItem(CopyItem.Name, CopyItem.Damage, CopyItem.Armor, CopyItem.Health, CopyItem.Mana, CopyItem.Description, CopyItem.Price);
-            }
-            else if (itemTpye == 3) 
-            {
-                Item CopyItem = _ConsumableItems[CopyNum];
-                return new ConsumableItem(CopyItem.Name, CopyItem.Description, CopyItem.Health, CopyItem.Mana, CopyItem.Price);
+                itemNumber = random.Next(10, 13);
+                itemType = random.Next(0, 4);
             }
             else
             {
-                Item CopyItem = _OtherItems[CopyNum];
-                return new OtherItem(CopyItem.Name, CopyItem.Description, CopyItem.Price);
+                itemNumber = random.Next(12, 15);
+                itemType = random.Next(0, 4);
             }
 
+            Item itemCopy;
+            if (itemType == 0)
+            {
+                Console.WriteLine(Game.itemManager._WeaponItems[itemNumber].Name);
+                itemCopy = Game.itemManager._WeaponItems[itemNumber];
+            }
+            else if (itemType == 1)
+            {
+                Console.WriteLine(Game.itemManager._ArmorItmes[itemNumber].Name);
+                itemCopy = Game.itemManager._ArmorItmes[itemNumber];
+            }
+            else if (itemType == 2)
+            {
+                Console.WriteLine(Game.itemManager._AccessoryItems[itemNumber].Name);
+                itemCopy = Game.itemManager._AccessoryItems[itemNumber];
+            }
+            else
+            {
+                Console.WriteLine(Game.itemManager._ConsumableItems[itemNumber].Name);
+                itemCopy = Game.itemManager._ConsumableItems[itemNumber];
+            }
 
-
+            Console.WriteLine($"{itemCopy.Name}아이템을 획득하시겠습니까?" +
+                "1번, 획득한다, 2번, 버린다.");
+            bool itemRooting = true;
+            var inPut = Console.ReadLine();
+            while (itemRooting)
+            {
+                if (inPut == "1")
+                {
+                    player.ItemGet(itemCopy);
+                    Console.WriteLine("아이템을 획득했습니다.");
+                    itemRooting = false;
+                }
+                else if (inPut == "2")
+                {
+                    Console.WriteLine("아이템을 버렸습니다.");
+                    itemRooting = false;
+                }
+                else
+                {
+                    Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
+                }
+            }
         }
     }
 }

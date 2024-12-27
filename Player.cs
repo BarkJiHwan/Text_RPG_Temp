@@ -11,6 +11,7 @@ namespace Temp
     internal class Player : Character
     {
         public bool Mainstory;
+        public List<Inventory> playerinventory {  get; set; }
         public Player(string name) : base(name, 100, 10, 5)
         {
             Name = name;
@@ -29,7 +30,8 @@ namespace Temp
             Exp = 0;
             MaxExp = 0;        
 
-            Inventory inventory = new Inventory();
+            playerinventory = new List<Inventory>();
+            
         }
 
         //public override void Attack(Character target)
@@ -72,5 +74,9 @@ namespace Temp
                 $"체력과 마력이 모두 회복됩니다.");
         }
 
+        public void ItemGet(Item item)
+        {            
+            playerinventory.Add( item);
+        }
     }
 }
