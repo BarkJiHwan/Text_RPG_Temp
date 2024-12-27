@@ -34,6 +34,7 @@ namespace Temp
             {
                 if (player.playerinventory.inventories.Count != 0)
                 {
+                    //여기부분 오류 생김 예외처리가 삭제 됐음
                         Item item = inventories[InventoryIndex];
                         if (item.Tpye == ItemTpye.Weapon)
                         {
