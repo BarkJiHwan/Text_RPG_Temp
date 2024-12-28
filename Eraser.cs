@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     static class Eraser
     {
@@ -18,12 +18,10 @@ namespace Temp
                 a = a + " ";                
             }            
         }
-        
-        
         public static void Clear()
         {
             Eraser.Init();
-            int height = 50;
+            int height = 40;
             Console.SetCursorPosition(0, 0);
             for (int i = 0; i < height; i++)
             {                

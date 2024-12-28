@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     internal class MapManager
     {//맵을 관리하는 클래스

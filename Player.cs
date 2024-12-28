@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     public delegate void EquipItemReturn(Player player, Item item);
     public class Player : Character
     {
-        public bool Mainstory;
+        public bool Mainstory { get; set; }
         public Inventory playerinventory {  get; set; }
         public Equipment Equipment { get; set; }
         public Player(string name) : base(name, 100, 10, 5)
@@ -194,17 +194,6 @@ namespace Temp
         public void ItemGet(Item item)
         {            
             playerinventory.inventories.Add(item); //인벤토리의 앞으로 착착 쌓임
-        }
-        public void PrintInven() //인벤토리에 뭐가 있는지 보여주는 메서드
-        {
-            Eraser.Clear();
-            Console.WriteLine("플레이어 인벤토리\n" +
-                "몇번째 아이템을 사용 하시겠습니까?\n");
-            int Number=0;
-            foreach (var item in playerinventory.inventories)
-            {
-                Console.WriteLine($"{Number++}번 아이템 : {item.Name}");
-            }
-        }
+        }        
     }
 }

@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 
-namespace Temp
+namespace TextRPGAlancia
 {
     internal class Program
     {
@@ -31,8 +31,8 @@ namespace Temp
                                   ▐▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌";
 
             Console.WriteLine(Textrpg);
-            Console.SetCursorPosition(41, 22);
-            Console.WriteLine("스페이스바를 눌러 게임 시작하기");
+            Console.SetCursorPosition(43, 22);
+            Console.WriteLine("스페이스바를 눌러 시작하기");
             
             Console.SetCursorPosition(52, 18);
             Console.WriteLine("게임 시작");

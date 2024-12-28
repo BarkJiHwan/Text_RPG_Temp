@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     internal class Dungeon : Location
     {
@@ -78,9 +78,10 @@ namespace Temp
 
         public void FirstDungeon(Player player, bool start, int mapType) //첫번째 던전
         {
+            MapType = 2;
             Random random = new Random();
-                Eraser.Clear();
-                Game.map.Locations[3].MapNamespace();
+            Eraser.Clear();
+            Game.map.Locations[3].MapNamespace();
             while (Game.start)
             {
                 while (start)
@@ -106,11 +107,10 @@ namespace Temp
                     switch (Console.ReadLine())
                     {
                         case "1":
-                            player.PlayerStats();
-                            Console.ReadKey(true);
+                            player.PlayerStats();                            
                             break;
                         case "2":
-                            player.PrintInven();
+                            Eraser.Clear();
                             player.playerinventory.SetingItem(player);
                             break;
                         case "3":

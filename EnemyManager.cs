@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     internal class EnemyManager
     {
@@ -27,6 +27,7 @@ namespace Temp
                 _enemies.Add(new Enemy("망령", 150, 30, 15, 20, 20));
                 _enemies.Add(new Enemy("붉은 슬라임", 180, 35, 18, 22, 25));
                 _enemies.Add(new Enemy("붉은 스켈레톤", 200, 40, 20, 25, 28));
+                _enemies.Add(new Enemy("경비대장 존", 1000, 80, 20, 220, 150));
 
                 _enemies.Add(new Enemy("오크", 220, 45, 22, 30, 32));
                 _enemies.Add(new Enemy("오우거", 280, 50, 25, 35, 38));
@@ -70,6 +71,8 @@ namespace Temp
                 _enemies.Add(new Enemy("독의 슬라임", 1290, 210, 105, 210, 140));
                 _enemies.Add(new Enemy("영혼의 유령", 1320, 215, 108, 215, 143));
                 _enemies.Add(new Enemy("천상의 사이클롭스", 1350, 220, 110, 220, 145));
+
+                
             }
         }
         public Enemy EnemyRandomGet(int mapIndex) 
@@ -85,7 +88,7 @@ namespace Temp
             }
             else if (mapIndex == 2)
             {
-                num = random.Next(3, 7);
+                num = random.Next(3, 8);
             }
             else if (mapIndex == 3)
             {

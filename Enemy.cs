@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     public class Enemy : Character
     {

@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     
     internal class Field : Location
     {
-        
+        private bool FirstFieldEnter = true;
+        private bool SecondFieldEnter = true;
         public Field(string name, string description, int maptype) : base(name, description, maptype)
         {            
         }
@@ -21,7 +22,7 @@ namespace Temp
         }
 
         public void DiscoverDungeon(Player player , bool start, int mapType)
-        {            
+        {
             while (start)
             {
                 Eraser.Clear();
@@ -53,12 +54,24 @@ namespace Temp
         {
             Eraser.Clear();
             ((Field)Game.map.Locations[2]).MapNamespace();
+            if (FirstFieldEnter)
+            {
+                if (player.Mainstory == true)
+                {
+                    Game.story.FirstMainStory(player);
+                }
+                else if (player.Mainstory == false)
+                {
+                    Game.story.secondMainSkeep2(player);
+                }
+                FirstFieldEnter = false;
+            }
             MapType = 1;
             Random random = new Random();
             while (Game.start)
             {
                 Eraser.Clear();
-                int rd = random.Next(0, 2); //필드 이동중 1/10확률로 던전에 들어가도록 설정
+                int rd = random.Next(0, 10); //필드 이동중 1/10확률로 던전에 들어가도록 설정
                 Console.WriteLine("이동중..");
                 Thread.Sleep(1000);                
                 if (rd == 0)
@@ -81,7 +94,7 @@ namespace Temp
                                 player.PlayerStats();
                                 break;
                             case "2":
-                                player.PrintInven();
+                                Eraser.Clear();
                                 player.playerinventory.SetingItem(player);
                                 break;
                             case "3":
@@ -127,7 +140,7 @@ namespace Temp
                         player.PlayerStats();
                         break;
                     case "2":
-                        player.PrintInven();
+                        Eraser.Clear();
                         player.playerinventory.SetingItem(player);
                         break;
                     case "3":

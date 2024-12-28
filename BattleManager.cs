@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     static class BattleManager
     {
@@ -76,7 +76,7 @@ namespace Temp
                         player.PlayerStats();
                         break;
                     case "2":
-                        player.PrintInven();
+                        Eraser.Clear();
                         player.playerinventory.SetingItem(player);
                         break;
                     case "3":

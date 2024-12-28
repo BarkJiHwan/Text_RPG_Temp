@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     internal class Game
     {
@@ -33,7 +34,7 @@ namespace Temp
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        Eraser.Clear();
+                        Eraser.Clear();                        
                         Console.WriteLine("??? : 알겠습니다.");
                         Console.ReadKey(true);
                         Console.WriteLine("마을촌장 : 따라 오게나");
@@ -46,7 +47,7 @@ namespace Temp
                         Console.WriteLine($"??? : ......!");
                         UserToName();
                         player.Mainstory = true;
-                        story.FirstQuarter(player);
+                        story.MainStory(player);
                         ((Village)map.Locations[1]).StartingVillage(player, start);
                         break;
                     case "2":
@@ -62,7 +63,8 @@ namespace Temp
                         Console.WriteLine("마을촌장 : 아! 그러고보니 자네 이름을 모르는군 자네의 이름이 뭔가?");
                         Console.WriteLine($"??? : 제..이름....");
                         UserToName();
-                        story.MainStorySkeep(player);
+                        player.Mainstory = false;
+                        story.FirstMainSkeep(player);
                         ((Village)map.Locations[1]).BeginningVillage(player, start);
                         break;
                     case "3":

@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     public delegate void InvenEquip(Player player, Item item);
     public class Inventory
@@ -21,11 +21,22 @@ namespace Temp
 
             }
         }
+        public void PrintInven() //인벤토리에 뭐가 있는지 보여주는 메서드
+        {
+            Console.WriteLine("플레이어 인벤토리\n" +
+                "몇번째 아이템을 사용 하시겠습니까?\n");
+            int Number = 0;
+            foreach (var item in inventories)
+            {
+                Console.WriteLine($"{Number++}번 아이템 : {item.Name}");
+            }
+        }
         public void SetingItem(Player player) //인벤토리 기능
         {
             bool start = true;
             while (start)
             {
+                PrintInven();
                 Console.WriteLine("\n" +
                     "숫자외의 값 입력시 인벤토리 종료");
                 bool Input = int.TryParse(Console.ReadLine(), out int InventoryIndex);
@@ -38,9 +49,9 @@ namespace Temp
                             Item item = inventories[InventoryIndex];
                             InvenEquip InvenEquiTrade = (p, i) =>
                             {
-                                p.EquimentItem(i);
-                                Console.WriteLine();
-                                i.Equip(p);
+                                p.EquimentItem(i);//장비창에 장착 시킴
+                                Console.WriteLine(); 
+                                i.Equip(p); //장비에 따른 플레이어 능력치 증가
                                 Console.WriteLine();
                                 inventories.RemoveAt(InventoryIndex);
                             };

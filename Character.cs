@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     public abstract class Character
     {
@@ -24,7 +24,7 @@ namespace Temp
         public int Level { get; set; }
         public int Exp { get; set; }
         public int MaxExp { get; set; }
-        public bool IsPlayerState { get; set; }
+        
         //static int EnemyCount = 0;
         protected Character(string name, int health, int damage, int armor)
         {

@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Win32;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     internal class Village : Location
     {
@@ -26,18 +26,24 @@ namespace Temp
             while (Game.start)
             {
                 Console.WriteLine("\n무엇을 하시겠습니까?");
-                Console.WriteLine("1. 캐릭터 정보 확인");
-                Console.WriteLine("2. 마을 이동");
-                Console.WriteLine("3. 게임 종료");
+                Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
+                "4.그린힐로 이동, 5.게임 종료");
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        player.PrintInven();
+                        player.PlayerStats();
                         break;
-                    case "2":                        
-                        StartingVillage(player, start);                        
+                    case "2":
+                        Eraser.Clear();
+                        player.playerinventory.SetingItem(player);
                         break;
                     case "3":
+                        player.EquimentGetItem(player, start);                        
+                        break;
+                    case "4":                        
+                        StartingVillage(player, start);                        
+                        break;
+                    case "5":
                         Game.GameStop();                        
                         break;
                     default:
@@ -61,7 +67,7 @@ namespace Temp
                         player.PlayerStats();
                         break;
                     case "2":
-                        player.PrintInven();
+                        Eraser.Clear();
                         player.playerinventory.SetingItem(player);
                         break;
                     case "3":
@@ -99,7 +105,7 @@ namespace Temp
                         player.PlayerStats();
                         break;
                     case "2":
-                        player.PrintInven();
+                        Eraser.Clear();
                         player.playerinventory.SetingItem(player);
                         break;
                     case "3":

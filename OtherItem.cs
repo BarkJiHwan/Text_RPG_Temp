@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Temp
+namespace TextRPGAlancia
 {
     internal class OtherItem : Item
     {//기타아이템 추가 못함
