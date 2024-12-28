@@ -14,10 +14,10 @@ namespace Temp
         public bool Mainstory;
         public Inventory playerinventory {  get; set; }
         public Equipment Equipment { get; set; }
-        public Player(string name, int level) : base(name, 100, 10, 5)
+        public Player(string name) : base(name, 100, 10, 5)
         {
             Name = name;
-            Level = level;
+            Level = 1;
             MaxHealth = 300;
             MaxMana = 100;
             Health = MaxHealth;
