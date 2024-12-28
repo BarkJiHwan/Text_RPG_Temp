@@ -9,9 +9,10 @@ namespace Temp
 {
     internal class ConsumableItem : Item
     {
-        public ConsumableItem(string name, string description, int health, int mana, int price)
+        public ConsumableItem(ItemTpye itemTpye, string name, string description, int health, int mana, int price)
             : base(ItemTpye.Consumable, name, description, price)
         {
+            itemTpye = ItemTpye.Consumable;
             Health = health;
             Mana = mana;
         }

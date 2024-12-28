@@ -8,9 +8,10 @@ namespace Temp
 {
     internal class ArmorItem : Item
     {
-        public ArmorItem(string name, int armor, int maxHealth, int maxMana, string description, int price)
+        public ArmorItem(ItemTpye itemTpye, string name, int armor, int maxHealth, int maxMana, string description, int price)
             : base(ItemTpye.Armor, name, description, price)
         {
+            itemTpye = ItemTpye.Armor;
             Armor = armor;
             MaxHealth = maxHealth;
             MaxMana = maxMana;
