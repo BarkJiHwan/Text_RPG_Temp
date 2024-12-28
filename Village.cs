@@ -21,6 +21,8 @@ namespace Temp
 
         public void BeginningVillage(Player player,bool start)
         {
+            Eraser.Clear();
+            Game.map.Locations[0].MapNamespace();
             while (Game.start)
             {
                 Console.WriteLine("\n무엇을 하시겠습니까?");
@@ -32,8 +34,7 @@ namespace Temp
                     case "1":
                         player.PrintInven();
                         break;
-                    case "2":
-                        Game.map.Locations[1].MapNamespace();
+                    case "2":                        
                         StartingVillage(player, start);                        
                         break;
                     case "3":
@@ -49,13 +50,15 @@ namespace Temp
         {            
             while (Game.start)
             {
+                Eraser.Clear();
+                Game.map.Locations[1].MapNamespace();
                 Console.WriteLine("무엇을 하시겠습니까?");
                 Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
                 "4.촌장의 집으로 이동, 5.초원으로 이동, 6.게임 종료");                
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        player.PlayerStats();                        
+                        player.PlayerStats();
                         break;
                     case "2":
                         player.PrintInven();
@@ -65,10 +68,12 @@ namespace Temp
                         player.EquimentGetItem(player, start);
                         break;
                     case "4":
-                        Console.WriteLine("촌장님"); //NPC + 퀘스트 관련 내용 추가 해야 됨                       
+                        //NPC + 퀘스트 관련 내용 추가 해야 됨
+                        Eraser.Clear();
+                        Console.WriteLine("Npc개발중");
+                        Console.ReadKey(true);
                         break;
-                    case "5":
-                        ((Field)Game.map.Locations[2]).MapNamespace();
+                    case "5":                        
                         ((Field)Game.map.Locations[2]).FirstField(player, start);
                         break;
                     case "6":
@@ -82,10 +87,11 @@ namespace Temp
         }
         public void SecondVillage(Player player, bool start) // 브라이튼 마을
         {
-            
             while (Game.start)
             {
-                Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
+                Eraser.Clear();
+                Game.map.Locations[4].MapNamespace();
+                Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
                 "4.분수대로 이동, 5.초원으로 이동, 6.대편원으로 이동 7.게임 종료");
                 switch (Console.ReadLine())
                 {
@@ -93,20 +99,22 @@ namespace Temp
                         player.PlayerStats();
                         break;
                     case "2":
-                        Console.WriteLine("촌장님");
+                        player.PrintInven();
+                        player.playerinventory.SetingItem(player);
                         break;
                     case "3":
-                        Console.WriteLine("상점");
+                        player.EquimentGetItem(player, start);
                         break;
                     case "4":
-                        Console.WriteLine("분수대");
+                        //NPC + 퀘스트 관련 내용 추가 해야 됨
+                        Eraser.Clear();
+                        Console.WriteLine("Npc개발중");
+                        Console.ReadKey(true);
                         break;
-                    case "5":
-                        ((Field)Game.map.Locations[2]).MapNamespace();
+                    case "5":                        
                         ((Field)Game.map.Locations[2]).FirstField(player, start);
                         break;
                     case "6":
-                        ((Field)Game.map.Locations[5]).MapNamespace();
                         ((Field)Game.map.Locations[5]).SecondField(player, start);
                         break;
                     case "7":
@@ -119,9 +127,11 @@ namespace Temp
             }
         }
         public void ThirdVillage(Player player, bool start) // 벨 플로라 마을
-        {            
+        {
             while (Game.start)
             {
+                Eraser.Clear();
+                Game.map.Locations[7].MapNamespace();
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
                 "4.분수대로 이동, 5.대평원으로 이동, 6.플로럴 밸리로 이동 7.게임 종료");
                 switch (Console.ReadLine())
@@ -131,20 +141,24 @@ namespace Temp
                         break;
                     case "2":
                         Console.WriteLine("촌장님");
+                        Console.ReadKey(true);
                         break;
                     case "3":
                         Console.WriteLine("상점");
+                        Console.ReadKey(true);
                         break;
                     case "4":
                         Console.WriteLine("분수대");
+                        Console.ReadKey(true);
                         break;
                     case "5":
                         ((Field)Game.map.Locations[5]).MapNamespace();
                         ((Field)Game.map.Locations[5]).FirstField(player, start);
                         break;
                     case "6":
-                        ((Field)Game.map.Locations[8]).MapNamespace();
-                        ((Field)Game.map.Locations[8]).SecondField(player, start);
+                        Console.WriteLine("개발중입니다.");
+                        //((Field)Game.map.Locations[8]).MapNamespace();
+                        //((Field)Game.map.Locations[8]).SecondField(player, start);
                         break;
                     case "7":
                         Game.GameStop();
@@ -157,9 +171,9 @@ namespace Temp
         }
         public void FourthVillage(Player player, bool start) // 네번째 마을
         {
-            
             while (Game.start)
             {
+            Eraser.Clear();
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +
                 "4.분수대로 이동, 5.플로럴 밸리로 이동, 6.네번째필드로 이동 7.게임 종료");
                 switch (Console.ReadLine())
@@ -194,7 +208,8 @@ namespace Temp
             }
         }
         public void FifthVillage(Player player, bool start) // 다섯번째 마을
-        {           
+        {
+            Eraser.Clear();
             while (Game.start)
             {
                 Console.WriteLine("1.스테이터스 확인, 2.촌장의 집으로 이동, 3.상점으로 이동\n" +

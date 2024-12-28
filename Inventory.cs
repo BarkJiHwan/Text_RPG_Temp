@@ -18,79 +18,83 @@ namespace Temp
         {
             inventories = new List<Item>();
             {
-                
+
             }
         }
         public void SetingItem(Player player) //인벤토리 기능
         {
-            Console.WriteLine("몇번째 아이템을 사용 하시겠습니까?\n" +
-                "첫번째 아이템은 0부터 시작합니다.");
-            Console.WriteLine("숫자 이외의 키 입력시 인벤토리 종료");
-            bool itemCheck = int.TryParse(Console.ReadLine(), out int InventoryIndex);
-
-            if (itemCheck == false)
+            bool start = true;
+            while (start)
             {
-                Console.WriteLine("인벤토리 나가기");
-            }
-            else
-            {
-                if (player.playerinventory.inventories.Count != 0)
+                Console.WriteLine("\n" +
+                    "숫자외의 값 입력시 인벤토리 종료");
+                bool Input = int.TryParse(Console.ReadLine(), out int InventoryIndex);
+                if (Input == true)
                 {
-                    if (InventoryIndex >= 0 && InventoryIndex < player.playerinventory.inventories.Count)
+                    if (player.playerinventory.inventories.Count != 0)
                     {
-                        Item item = inventories[InventoryIndex];
-                        InvenEquip InvenEquiTrade = (p, i) =>
+                        if (InventoryIndex >= 0 && InventoryIndex < player.playerinventory.inventories.Count)
                         {
-                            p.EquimentItem(i);
-                            i.Equip(p);
-                            inventories.RemoveAt(InventoryIndex);
-                        };
-                        if (item.Tpye == ItemTpye.Weapon)
-                        {
-                            if (player.Equipment.Equip[ItemTpye.Weapon] != null)
+                            Item item = inventories[InventoryIndex];
+                            InvenEquip InvenEquiTrade = (p, i) =>
                             {
-                                player.ReturnInven(player, item);
-                                InvenEquiTrade(player, item);
-                                //player.EquimentItem(item); //장비창에 장착 시킴
-                                //item.Equip(player); //장비에 따른 플레이어 능력치 증가
-                                //inventories.RemoveAt(InventoryIndex);
+                                p.EquimentItem(i);
+                                Console.WriteLine();
+                                i.Equip(p);
+                                Console.WriteLine();
+                                inventories.RemoveAt(InventoryIndex);
+                            };
+                            if (item.Tpye == ItemTpye.Weapon)
+                            {
+                                if (player.Equipment.Equip[ItemTpye.Weapon] != null)
+                                {
+                                    player.ReturnInven(player, item);
+                                    InvenEquiTrade(player, item);
+                                    //player.EquimentItem(item); //장비창에 장착 시킴
+                                    //item.Equip(player); //장비에 따른 플레이어 능력치 증가
+                                    //inventories.RemoveAt(InventoryIndex);
+                                }
+                                else if (player.Equipment.Equip[ItemTpye.Weapon] == null)
+                                {
+                                    InvenEquiTrade(player, item);
+                                }
                             }
-                            else if (player.Equipment.Equip[ItemTpye.Weapon] == null)
+                            else if (item.Tpye == ItemTpye.Armor)
+                            {
+                                if (player.Equipment.Equip[ItemTpye.Armor] != null)
+                                {
+                                    player.ReturnInven(player, item);
+                                    InvenEquiTrade(player, item);
+                                }
+                                else if (player.Equipment.Equip[ItemTpye.Armor] == null)
+                                {
+                                    InvenEquiTrade(player, item);
+                                }
+                            }
+                            else if (item.Tpye == ItemTpye.Accessory)
+                            {
+                                if (player.Equipment.Equip[ItemTpye.Accessory] != null)
+                                {
+                                    player.ReturnInven(player, item);
+                                    InvenEquiTrade(player, item);
+                                }
+                                else if (player.Equipment.Equip[ItemTpye.Accessory] == null)
+                                {
+                                    InvenEquiTrade(player, item);
+                                }
+                            }
+                            else if (item.Tpye == ItemTpye.Consumable)
                             {
                                 InvenEquiTrade(player, item);
                             }
-                        }
-                        else if (item.Tpye == ItemTpye.Armor)
-                        {
-                            if (player.Equipment.Equip[ItemTpye.Armor] != null)
+                            else
                             {
-                                player.ReturnInven(player, item);
-                                InvenEquiTrade(player, item);
+                                Console.WriteLine("기타아이템은 사용할 수 없습니다."); //기타 아이템 추가 못함
                             }
-                            else if (player.Equipment.Equip[ItemTpye.Armor] == null)
-                            {
-                                InvenEquiTrade(player, item);
-                            }
-                        }
-                        else if (item.Tpye == ItemTpye.Accessory)
-                        {
-                            if (player.Equipment.Equip[ItemTpye.Accessory] != null)
-                            {
-                                player.ReturnInven(player, item);
-                                InvenEquiTrade(player, item);
-                            }
-                            else if (player.Equipment.Equip[ItemTpye.Accessory] == null)
-                            {
-                                InvenEquiTrade(player, item);
-                            }
-                        }
-                        else if (item.Tpye == ItemTpye.Consumable)
-                        {
-                            InvenEquiTrade(player, item);
                         }
                         else
                         {
-                            Console.WriteLine("기타아이템은 사용할 수 없습니다."); //기타 아이템 추가 못함
+                            Console.WriteLine("해당 번수의 인벤토리가 비었습니다.");
                         }
                     }
                     else
@@ -99,8 +103,9 @@ namespace Temp
                     }
                 }
                 else
-                {
-                    Console.WriteLine("해당 번수의 인벤토리가 비었습니다.");
+                {                    
+                    start = false;                    
+                    Eraser.Clear();
                 }
             }
         }

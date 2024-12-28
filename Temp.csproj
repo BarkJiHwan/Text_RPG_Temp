@@ -51,11 +51,14 @@
     <Compile Include="Dungeon.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Equipment.cs" />
+    <Compile Include="Eraser.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemManager.cs" />
+    <Compile Include="LevelManager.cs" />
+    <Compile Include="LevelUp.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="MapManager.cs" />
     <Compile Include="EnemyManager.cs" />

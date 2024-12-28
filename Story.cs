@@ -51,11 +51,13 @@ namespace Temp
             Console.WriteLine($"{player.Name} : 왜.. 그러십니까?");
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : 허허 아닐세 저기 보이는 마을이 우리 \'그린힐\'마을일세");
+            Console.WriteLine();
             Game.map.Locations[0].MapNamespace();
+            Console.WriteLine();
             Console.ReadKey(true);
-            Console.WriteLine($"{player.Name} : 윽...");
+            Console.WriteLine($"{player.Name} :!? 윽...");
             Console.ReadKey(true);
-            Console.WriteLine("마을촌장 : ?!.. 괜찮은가? ");
+            Console.WriteLine("마을촌장 : ?!..자네 괜찮은가? ");
             Console.ReadKey(true);
             Console.WriteLine($"{player.Name} : 괜찮습니다.. 조금 어지러워서요. \'분명 처음 보는 풍경일텐데 낯설지가 않아...\'");
             Console.ReadKey(true);
@@ -73,7 +75,7 @@ namespace Temp
             Console.ReadKey(true);
             Console.WriteLine($"{player.Name} : ..알겠습니다.");
             Console.ReadKey(true);
-            Console.Clear();
+            Eraser.Clear();
             Console.WriteLine("마을 촌장은 돌아가고 혼자 남은 주인공은 근처의 밴치에 앉아 혼란스러운 마음을 정리하기 시작한다.\n" +
                 " 그는 전이된 충격과 낯선 환경에 대한 불안감을 느끼며 깊은 생각에 잠긴다. \n" +
                 "차가운 바람이 그의 얼굴을 스치고 지나간다.\n" +

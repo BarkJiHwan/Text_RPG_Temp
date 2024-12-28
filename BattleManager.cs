@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Temp
 {
     static class BattleManager
-    {        
+    {
         static public bool FightSeting()
         {
             Console.WriteLine("1. 싸운다.");
@@ -17,7 +17,7 @@ namespace Temp
             switch (Console.ReadLine())
             {
                 case "1":
-                    
+
                     return isFighting = true;
                 case "2":
 
@@ -30,6 +30,7 @@ namespace Temp
 
         static public void HeroesNeverDying(Player player, bool start)
         {
+            Eraser.Clear();
             Console.WriteLine("1. 부활하기");
             start = true;
             var input = Console.ReadLine();
@@ -48,7 +49,7 @@ namespace Temp
                     Thread.Sleep(1000);
                     player.HealthZero(player);
                     Console.WriteLine("1... \t");
-                    Thread.Sleep(1000);
+                    Thread.Sleep(1000);                                        
                     ((Village)Game.map.Locations[0]).BeginningVillage(player, start);
                 }
                 else
@@ -56,22 +57,21 @@ namespace Temp
                     Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
                 }
             }
-        }        
+        }
 
-        public static void Fight(Player player, Enemy enemy ,bool start ,int mapNum)
+        public static void Fight(Player player, Enemy enemy, bool start, int mapNum)
         {//전투 매서드
             Console.WriteLine($"{enemy.Name} 발견 싸우시겠습니까? ");
             Random Random = new Random();
             bool isFighting = BattleManager.FightSeting();
-            
+            Eraser.Clear();
             while (isFighting)
             {
                 enemy.EnemyDisplayStats();
                 Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
-               "4. 공격한다., 5. 도망간다., 6. 게임 종료");
-                
-                    switch (Console.ReadLine())
-                { 
+               "4. 공격한다. 5. 도망간다. 6. 게임 종료");
+                switch (Console.ReadLine())
+                {
                     case "1":
                         player.PlayerStats();
                         break;
@@ -82,7 +82,7 @@ namespace Temp
                     case "3":
                         player.EquimentGetItem(player, start);
                         break;
-                    case "4":                        
+                    case "4":
                         if (enemy.Health > 0)
                         {
                             player.Attack(enemy);
@@ -102,8 +102,10 @@ namespace Temp
                                 player.Exp += enemy.Exp;
                                 player.Gold += enemy.Gold;
                                 Console.WriteLine($"경험치 :{enemy.Exp}획득, 골드: {enemy.Gold}획득,");
-                                Game.itemManager.ItemRooting(player,mapNum);
+                                Game.itemManager.ItemRooting(player, mapNum);
                                 isFighting = false;
+                                Console.ReadKey(true);
+                                Eraser.Clear();
                             }
                         }
                         else
@@ -111,9 +113,11 @@ namespace Temp
                             Console.WriteLine("승리");
                             player.Exp += enemy.Exp;
                             player.Gold += enemy.Gold;
-                            Console.WriteLine($"경험치 :{enemy.Exp}획득, 골드: {enemy.Gold}획득,");
+                            Console.WriteLine($"경험치 :{enemy.Exp}획득, 골드: {enemy.Gold}획득,");                            
                             Game.itemManager.ItemRooting(player, mapNum);
                             isFighting = false;
+                            Console.ReadKey(true);
+                            Eraser.Clear();
                         }
                         break;
                     case "5":
@@ -123,12 +127,16 @@ namespace Temp
                             enemy.Attack(player);
                             Console.WriteLine("도망가는 도중 적에게 공격당했습니다.");
                             isFighting = false;
+                            Console.ReadKey(true);
+                            Eraser.Clear();
                         }
                         else
                         {
                             Console.WriteLine("성공적으로 도망쳤습니다.");
                             isFighting = false;
-                        }                        
+                            Console.ReadKey(true);
+                            Eraser.Clear();
+                        }
                         break;
                     case "6":
                         Game.GameStop();
@@ -138,6 +146,6 @@ namespace Temp
                         break;
                 }
             }
-        }            
+        }
     }
 }

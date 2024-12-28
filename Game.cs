@@ -17,6 +17,7 @@ namespace Temp
         public static EnemyManager enemy { get; private set; } = new EnemyManager();
         public static Story story { get; private set; } = new Story();
         public static ItemManager itemManager { get; private set; } = new ItemManager();
+        public static LevelManager levelManager { get; private set; } = new LevelManager();
         public static bool start;
         public Game()
         {
@@ -24,6 +25,7 @@ namespace Temp
         }
         public void Start()
         {
+            
             story.StratStory();
             Console.WriteLine("1. 촌장을 따라 간다, 2. 촌장을 따라가지 않는다., 3. 게임 종료");
             while (start)
@@ -31,7 +33,7 @@ namespace Temp
                 switch (Console.ReadLine())
                 {
                     case "1":
-                        Console.Clear();
+                        Eraser.Clear();
                         Console.WriteLine("??? : 알겠습니다.");
                         Console.ReadKey(true);
                         Console.WriteLine("마을촌장 : 따라 오게나");
@@ -48,7 +50,7 @@ namespace Temp
                         ((Village)map.Locations[1]).StartingVillage(player, start);
                         break;
                     case "2":
-                        Console.Clear();
+                        Eraser.Clear();
                         Console.WriteLine("??? : 괜찮습니다. 처음보는 장소에서 아무나 믿고 따라 갈수는 없죠");
                         Console.ReadKey(true);
                         Console.WriteLine("마을촌장 : 허허.. 알겠네 나는 여기서 얼마 떨어지지 않은 그린힐 마을의 촌장이라네\n" +
@@ -83,6 +85,7 @@ namespace Temp
                 playerName = Console.ReadLine();
             }
             player = new Player(playerName);
+            Eraser.Clear();
         }
 
         public static void GameStop()

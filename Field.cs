@@ -21,9 +21,10 @@ namespace Temp
         }
 
         public void DiscoverDungeon(Player player , bool start, int mapType)
-        {
+        {            
             while (start)
             {
+                Eraser.Clear();
                 Console.WriteLine("던전을 발견했습니다.\n" +
                     "1. 들어간다, 2. 들어가지 않는다.");
                 switch (Console.ReadLine())
@@ -50,11 +51,14 @@ namespace Temp
 
         public void FirstField(Player player, bool start) //첫번째 필드 (사냥터)
         {
+            Eraser.Clear();
+            ((Field)Game.map.Locations[2]).MapNamespace();
             MapType = 1;
             Random random = new Random();
             while (Game.start)
             {
-                int rd = random.Next(0, 10); //필드 이동중 1/10확률로 던전에 들어가도록 설정
+                Eraser.Clear();
+                int rd = random.Next(0, 2); //필드 이동중 1/10확률로 던전에 들어가도록 설정
                 Console.WriteLine("이동중..");
                 Thread.Sleep(1000);                
                 if (rd == 0)
@@ -106,12 +110,14 @@ namespace Temp
             }
         }
         public void SecondField(Player player, bool start) //두번째 필드 (사냥터)
-        {
+        {            
             MapType = 2;
             Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
             BattleManager.Fight(player, enemyRnadomGet, start , MapType);
             while (Game.start)
             {
+                Eraser.Clear();
+                Game.map.Locations[5].MapNamespace();
                 Console.WriteLine("전투가 끝났습니다. 다음 마을이 보입니다 이동하시겠습니까?");
                 Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
                     "4.다른 몬스터와 전투, 5.브라이튼 마을로 이동, 6.벨 플로라 마을로 이동, 7.게임 종료");
@@ -129,12 +135,10 @@ namespace Temp
                         break;
                     case "4":
                         break;
-                    case "5":
-                        ((Village)Game.map.Locations[4]).MapNamespace();
+                    case "5":                        
                         ((Village)Game.map.Locations[4]).SecondVillage(player, start);
                         break;
-                    case "6":
-                        ((Village)Game.map.Locations[7]).MapNamespace();
+                    case "6":                        
                         ((Village)Game.map.Locations[7]).ThirdVillage(player, start);
                         break;
                     case "7":

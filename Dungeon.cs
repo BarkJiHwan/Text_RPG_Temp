@@ -59,12 +59,12 @@ namespace Temp
                 else if (userInput == "2")
                 {
                     Console.WriteLine($"{player.Name} : 저 보물상자는 수상해 보이는군..");
-                    Console.ReadKey(true);                    
+                    Console.ReadKey(true);
                     stop = false;
                 }
 
                 else if (userInput == "3")
-                {                    
+                {
                     Console.WriteLine("던전을 나옵니다.");
                     ((Field)Game.map.Locations[2]).FirstField(player, stop);
                     stop = false;
@@ -79,10 +79,12 @@ namespace Temp
         public void FirstDungeon(Player player, bool start, int mapType) //첫번째 던전
         {
             Random random = new Random();
+                Eraser.Clear();
+                Game.map.Locations[3].MapNamespace();
             while (Game.start)
             {
                 while (start)
-                {
+                {                    
                     //Console.WriteLine("퀘스트 내용");// 추가해야 됨, 던전 인덱스 마다 퀘스트 변경//할시간 없음
                     //Console.WriteLine("퀘스트 진행상황 ?/?");
                     Console.WriteLine("던전 탐험중..");
@@ -97,40 +99,43 @@ namespace Temp
                     {
                         Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
                         BattleManager.Fight(player, enemyRnadomGet, start, MapType);
-                        Console.WriteLine("전투가 끝났습니다. 무엇을 하시겠습니까?");
-                        Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
-                           "4.이동하기, 5.던전 탈출하기 6.게임 종료");
-                        switch (Console.ReadLine())
-                        {
-                            case "1":
-                                player.PlayerStats();
-                                break;
-                            case "2":
-                                player.PrintInven();
-                                player.playerinventory.SetingItem(player);
-                                break;
-                            case "3":
-                                player.EquimentGetItem(player, start);
-                                break;
-                            case "4":
-                                break;
-                            case "5":
-                                Console.WriteLine("던전을 나옵니다.");
-                                ((Field)Game.map.Locations[2]).FirstField(player, start);
-                                break;
-                            case "6":
-                                start = false;
-                                Game.GameStop();
-                                break;
-                            default:
-                                Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요."); //전투를 시작하지 않음 처리 3번과 동일한 상황//반복문에 넣음          
-                                break;
-                        }
                     }
+                    Console.WriteLine("전투가 끝났습니다. 무엇을 하시겠습니까?");
+                    Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
+                       "4.이동하기, 5.던전 탈출하기 6.게임 종료");
+                    switch (Console.ReadLine())
+                    {
+                        case "1":
+                            player.PlayerStats();
+                            Console.ReadKey(true);
+                            break;
+                        case "2":
+                            player.PrintInven();
+                            player.playerinventory.SetingItem(player);
+                            break;
+                        case "3":
+                            player.EquimentGetItem(player, start);
+                            break;
+                        case "4":
+                            break;
+                        case "5":
+                            Console.WriteLine("던전을 나옵니다.");
+                            ((Field)Game.map.Locations[2]).FirstField(player, start);
+                            break;
+                        case "6":
+                            start = false;
+                            Game.GameStop();
+                            break;
+                        default:
+                            Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요."); //전투를 시작하지 않음 처리 3번과 동일한 상황//반복문에 넣음          
+                            break;
+                    }
+                    Eraser.Clear();
                 }
             }
         }
     }
+}
         //Console.WriteLine("던전이다..."); //던전 설명
 
         //    //몬스터와 만남 메서드 /완료
@@ -147,4 +152,3 @@ namespace Temp
         //    Console.WriteLine("던전의 보스를 처치했다..."); //원래 있던 필드로 이동 하기. //할시간없음
 
         
-}
