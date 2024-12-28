@@ -99,7 +99,7 @@ namespace Temp
                         BattleManager.Fight(player, enemyRnadomGet, start, MapType);
                         Console.WriteLine("전투가 끝났습니다. 무엇을 하시겠습니까?");
                         Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
-                           "4.이동하기, ,5.던전 탈출하기 6.게임 종료");
+                           "4.이동하기, 5.던전 탈출하기 6.게임 종료");
                         switch (Console.ReadLine())
                         {
                             case "1":

@@ -8,9 +8,10 @@ namespace Temp
 {
     internal class WeaponItem : Item
     {
-        public WeaponItem(string name, int damage, double criticall, double criticalDam, string description ,int price) 
+        public WeaponItem(ItemTpye itemTpye, string name, int damage, double criticall, double criticalDam, string description ,int price) 
             : base(ItemTpye.Weapon, name, description, price)
         {
+            itemTpye = ItemTpye.Weapon;
             Damage = damage;
             Critical = criticall;
             CriticalDam = criticalDam;

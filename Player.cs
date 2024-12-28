@@ -36,34 +36,35 @@ namespace Temp
         }
 
         public void EquimentItem(Item item)
-        {
+        {            
             if (item.Tpye == ItemTpye.Weapon)
             {
-                Equipment.Equip[ItemTpye.Weapon] = item;
+                Equipment.Equip[ItemTpye.Weapon] = item;                
             }
             else if (item.Tpye == ItemTpye.Armor)
             {
-                Equipment.Equip[ItemTpye.Armor] = item;
+                Equipment.Equip[ItemTpye.Armor] = item;                
             }
             else if (item.Tpye == ItemTpye.Accessory)
             {
-                Equipment.Equip[ItemTpye.Accessory] = item;
-            }
+                Equipment.Equip[ItemTpye.Accessory] = item;                
+            }            
         }
 
-        public void ReturnInven(Player player)
-        {
-            if (Equipment.Equip[ItemTpye.Weapon] != null)
+        public void ReturnInven(Player player, Item item)
+        {            
+            //
+            if (item.Tpye == ItemTpye.Weapon)
             {
                 playerinventory.inventories.Add(Equipment.Equip[ItemTpye.Weapon]);
                 Equipment.Equip[ItemTpye.Weapon].Unequip(player);
             }
-            else if (Equipment.Equip[ItemTpye.Armor] != null)
+            else if (item.Tpye == ItemTpye.Armor)
             {
                 playerinventory.inventories.Add(Equipment.Equip[ItemTpye.Armor]);
                 Equipment.Equip[ItemTpye.Armor].Unequip(player);
             }
-            else if (Equipment.Equip[ItemTpye.Accessory] != null)
+            else if (item.Tpye == ItemTpye.Accessory)
             {
                 playerinventory.inventories.Add(Equipment.Equip[ItemTpye.Accessory]);
                 Equipment.Equip[ItemTpye.Accessory].Unequip(player);
