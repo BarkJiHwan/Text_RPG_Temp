@@ -10,10 +10,10 @@ namespace Temp
     {
         public void StratStory()
         {
-            Console.WriteLine("따스한 햇살이 내리쬐는 들판 위. 푸른 하늘에서 번쩍이는 빛이 내려친다. \n" +
+            Console.WriteLine("저녁 노을이 지는 들판 위. 붉게 물든 하늘에서 번쩍이는 빛이 내려친다.\n" +
                 "빛이 사라지며, 그 자리에 낯선 남자가 누워 있다.\n");
             Console.ReadKey(true);
-            Console.WriteLine("촌장은 마을 주변을 순찰하던 중, 들판에 쓰러져 있는 남자를 발견한다. \n" +
+            Console.WriteLine("촌장은 마을 주변을 순회하던 중, 들판에 쓰러져 있는 남자를 발견한다. \n" +
                 "촌장은 조심스럽게 다가가 남자의 상태를 살피고, 그가 아직 살아있음을 확인한다.\n" +
                 "촌장은 이전에도 이런 일이 있었음을 떠올리며, 걱정스러운 표정을 짓는다.\n");
             Console.ReadKey(true);
@@ -85,13 +85,14 @@ namespace Temp
                 "주인공은 이제 이 새로운 세상에서 살아남기 위해 자신을 다잡는다.\n");
             Console.ReadKey(true);
         }
-        public void FirstQuarter2(Player player)
+        public void MainStorySkeep(Player player)
         {
-            Console.WriteLine($"{player.Name} : 제 이름은 {player.Name}입니다. ");
+            Console.WriteLine($"{player.Name} : 제 이름은 \"{player.Name}\"입니다. ");
             Console.ReadKey(true);
             Console.WriteLine("마을촌장 : 알겠네. 입구에 자네 이름을 말해둘테니 언제든 들려 주게나..");
             Console.ReadKey(true);
             Console.WriteLine($"{player.Name} : .. 알겠습니다.");
+            Console.ReadKey(true);
             Console.WriteLine("마을 촌장은 돌아가고 혼자 남은 주인공은 들판에 앉아 혼란스러운 마음을 정리하기 시작한다.\n" +
                 " 그는 전이된 충격과 낯선 환경에 대한 불안감을 느끼며 깊은 생각에 잠긴다. \n" +
                 "차가운 바람이 그의 얼굴을 스치고 지나간다.\n" +
@@ -107,7 +108,37 @@ namespace Temp
             Console.ReadKey(true);
             Console.WriteLine($"{player.Name} : 주인공은 결의에 찬 표정으로 마음을 다잡으며 촌장이 사라진 길을 따라간다.\n " +
                 $"그의 눈빛에는 강한 의지가 담겨있다.");
+            Eraser.Clear();
+            Console.ReadKey(true);
+            Console.WriteLine($"{player.Name} : 안녕하십니까?");
+            Console.ReadKey(true);
+            Console.WriteLine("마을 경비 : 음? 처음 보는 얼굴이군. 자넨 누구지?");
+            Console.ReadKey(true);
+            Console.WriteLine($"{player.Name} : 촌장님께서 부르셔서 왔습니다.");
+            Console.ReadKey(true);
+            Console.WriteLine("마을 경비 : 촌장님께서? 흠... 잠시만 기다려 보게.");
+            Console.ReadKey(true);
+            Console.WriteLine($"{player.Name} : 알겠습니다.");
+            Console.ReadKey(true);
+            Console.WriteLine("경비가 초소에 들어가서 장부를 살핀다.");
+            Console.ReadKey(true);
+            Console.WriteLine("마을 경비 : 음.. 자네 이름이 어떻게 되나?");
+            Console.ReadKey(true);
+            Console.WriteLine($"{player.Name} : {player.Name}입니다.");
+            Console.ReadKey(true);
+            Console.WriteLine($"마을 경비 : {player.Name}... {player.Name}... 아, 여기 있군.");
+            Console.ReadKey(true);
+            Console.WriteLine($"{player.Name} : 확인됐습니까?");
+            Console.ReadKey(true);
+            Console.WriteLine("마을 경비 : 확인됐네. 촌장님은 지금 마을 순회 중이실 테니 촌장님 댁으로 가서 조금 기다리면 될 걸세.");
+            Console.ReadKey(true);
+            Console.WriteLine($"{player.Name} : 감사합니다.");
+            Console.ReadKey(true);
+            Console.WriteLine("마을 경비 : 촌장님 집은 저기 언덕 뒷편에 있다네.");
+            Console.ReadKey(true);
+            Console.WriteLine($"마을 검문소를 지나 {player.Name}는 마을로 들어간다.");
             Console.ReadKey(true);
         }
+
     }
 }

@@ -62,8 +62,8 @@ namespace Temp
                         Console.WriteLine("마을촌장 : 아! 그러고보니 자네 이름을 모르는군 자네의 이름이 뭔가?");
                         Console.WriteLine($"??? : 제..이름....");
                         UserToName();
-                        story.FirstQuarter2(player);
-                        ((Village)map.Locations[0]).BeginningVillage(player, start);
+                        story.MainStorySkeep(player);
+                        ((Village)map.Locations[1]).BeginningVillage(player, start);
                         break;
                     case "3":
                         GameStop();
