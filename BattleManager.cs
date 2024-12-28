@@ -33,9 +33,9 @@ namespace TextRPGAlancia
             Eraser.Clear();
             Console.WriteLine("1. 부활하기");
             start = true;
-            var input = Console.ReadLine();
             while (start)
             {
+                var input = Console.ReadLine();
                 if (input == "1")
                 {
                     start = false;
