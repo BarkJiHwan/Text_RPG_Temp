@@ -40,15 +40,15 @@ namespace TextRPGAlancia
         {            
             if (item.Tpye == ItemTpye.Weapon)
             {
-                Equipment.Equip[ItemTpye.Weapon] = item;                
+                Equipment.Equip[ItemTpye.Weapon] = item;
             }
             else if (item.Tpye == ItemTpye.Armor)
             {
-                Equipment.Equip[ItemTpye.Armor] = item;                
+                Equipment.Equip[ItemTpye.Armor] = item;
             }
             else if (item.Tpye == ItemTpye.Accessory)
             {
-                Equipment.Equip[ItemTpye.Accessory] = item;                
+                Equipment.Equip[ItemTpye.Accessory] = item;
             }            
         }
 

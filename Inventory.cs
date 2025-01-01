@@ -53,7 +53,7 @@ namespace TextRPGAlancia
                                 Console.WriteLine(); 
                                 i.Equip(p); //장비에 따른 플레이어 능력치 증가
                                 Console.WriteLine();
-                                inventories.RemoveAt(InventoryIndex);
+                                inventories.RemoveAt(InventoryIndex); //해당 아이템을 인벤토리에서 제거
                             };
                             if (item.Tpye == ItemTpye.Weapon)
                             {

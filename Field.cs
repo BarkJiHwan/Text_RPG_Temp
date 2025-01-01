@@ -34,9 +34,9 @@ namespace TextRPGAlancia
                         if(mapType == 1)
                         {
                             //Quest = mapType; 퀘스트 테이블 추가 예정
+                            start = false;
                             ((Dungeon)Game.map.Locations[3]).MapNamespace();
                             ((Dungeon)Game.map.Locations[3]).FirstDungeon(player, start, mapType);
-                            start = false;
                         }
                         break;
                     case "2":
@@ -70,8 +70,9 @@ namespace TextRPGAlancia
             Random random = new Random();
             while (Game.start)
             {
+                start = true;
                 Eraser.Clear();
-                int rd = random.Next(0, 10); //필드 이동중 1/10확률로 던전에 들어가도록 설정
+                int rd = random.Next(0, 1); //필드 이동중 1/10확률로 던전에 들어가도록 설정
                 Console.WriteLine("이동중..");
                 Thread.Sleep(1000);                
                 if (rd == 0)
@@ -80,9 +81,7 @@ namespace TextRPGAlancia
                     FirstField(player, start);
                 }
                 else
-                {
-                    Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
-                    BattleManager.Fight(player, enemyRnadomGet, start, MapType);
+                {                   
                     while (start)
                     {
                         Console.WriteLine("전투가 끝났습니다. 다음 마을이 보입니다 이동하시겠습니까?");
@@ -101,18 +100,27 @@ namespace TextRPGAlancia
                                 player.EquimentGetItem(player, start);                                
                                 break;
                             case "4":
-                                FirstField(player, start);
+                                start = false;
+                                Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
+                                BattleManager.Fight(player, enemyRnadomGet, start, MapType);
+                                start = true;
                                 break;
                             case "5":
+                                start = false;
                                 ((Village)Game.map.Locations[1]).MapNamespace();
                                 ((Village)Game.map.Locations[1]).StartingVillage(player, start);
+                                start = true;
                                 break;
                             case "6":
+                                start = false;
                                 ((Village)Game.map.Locations[4]).MapNamespace();
                                 ((Village)Game.map.Locations[4]).SecondVillage(player, start);
+                                start = true;
                                 break;
                             case "7":
+                                start = false;
                                 Game.GameStop();
+                                start = true;
                                 break;
                             default:
                                 Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요."); //전투를 시작하지 않음 처리 3번과 동일한 상황                    
@@ -122,7 +130,7 @@ namespace TextRPGAlancia
                 }
             }
         }
-        public void SecondField(Player player, bool start) //두번째 필드 (사냥터)
+        public void SecondField(Player player, bool start) //두번째 필드 (사냥터) 수정안됨
         {            
             MapType = 2;
             Enemy enemyRnadomGet = Game.enemy.EnemyRandomGet(MapType);
@@ -148,13 +156,16 @@ namespace TextRPGAlancia
                         break;
                     case "4":
                         break;
-                    case "5":                        
+                    case "5":
+                        start = false;
                         ((Village)Game.map.Locations[4]).SecondVillage(player, start);
                         break;
-                    case "6":                        
+                    case "6":
+                        start = false;
                         ((Village)Game.map.Locations[7]).ThirdVillage(player, start);
                         break;
                     case "7":
+                        start = false;
                         Game.GameStop();
                         break;
                     default:

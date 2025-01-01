@@ -52,7 +52,7 @@ namespace TextRPGAlancia
                 }
             }
         }
-        public void StartingVillage(Player player, bool start) // 그린 힐 마을, 리팩터링 해서 마을 클래스로 만들고 이름 전부 변경해야 되는데....
+        public void StartingVillage(Player player, bool start) // 그린 힐 마을
         {            
             while (Game.start)
             {

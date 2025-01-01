@@ -28,11 +28,11 @@ namespace TextRPGAlancia
             }
         }
 
-        static public void HeroesNeverDying(Player player, bool start)
+        static public void HeroesNeverDying(Player player)
         {
             Eraser.Clear();
             Console.WriteLine("1. 부활하기");
-            start = true;
+            bool start = true;
             while (start)
             {
                 var input = Console.ReadLine();
@@ -69,7 +69,7 @@ namespace TextRPGAlancia
             {
                 enemy.EnemyDisplayStats();
                 Console.WriteLine("1.스테이터스 확인, 2.인벤토리 확인, 3.장비창 확인\n" +
-               "4. 공격한다. 5. 도망간다. 6. 게임 종료");
+               "4. 공격한다. 5. 도망간다.");
                 switch (Console.ReadLine())
                 {
                     case "1":
@@ -92,7 +92,7 @@ namespace TextRPGAlancia
                                 if (player.Health < 0)
                                 {
                                     Console.WriteLine("당신은 죽었습니다");
-                                    HeroesNeverDying(player, start);
+                                    HeroesNeverDying(player);
                                     isFighting = false;
                                 }
                             }
@@ -137,10 +137,7 @@ namespace TextRPGAlancia
                             Console.ReadKey(true);
                             Eraser.Clear();
                         }
-                        break;
-                    case "6":
-                        Game.GameStop();
-                        break;
+                        break;                    
                     default:
                         Console.WriteLine("잘못된 선택입니다. 다시 선택해주세요.");
                         break;

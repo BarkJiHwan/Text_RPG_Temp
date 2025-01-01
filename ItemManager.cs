@@ -201,11 +201,12 @@ namespace TextRPGAlancia
                 itemNumber = random.Next(10, 13);
                 itemType = random.Next(0, 4);
             }
-            else
-            {
+            else if(mapNum == 5) 
+            {            
                 itemNumber = random.Next(12, 15);
                 itemType = random.Next(0, 4);
             }
+
 
             Item itemCopy;
             if (itemType == 0)
